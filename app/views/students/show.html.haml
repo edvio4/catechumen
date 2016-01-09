@@ -1,0 +1,16 @@
+.show-container
+  %h1.show-title= @student.name
+
+%div.links
+  %p= link_to "Edit", '#'
+  %p= link_to "Delete", @student, method: :delete
+
+-# %div= render 'reviews/form'
+-#
+-# - if !@reviews.nil?
+-#   %ul
+-#     - @reviews.each do |review|
+-#       -if !review.title.empty?
+-#         %li= review.title
+-#         %li= review.body
+-#         %li= "written by: #{review.user.username}"
