@@ -1,0 +1,11 @@
+%h1 Students
+
+%ul
+  - @students.each do |student|
+    .student
+      %p.student-name= link_to student.name, student_path(student)
+
+%hr
+
+%h5 Add New Student
+%div= render 'form'

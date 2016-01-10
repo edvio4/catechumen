@@ -1,0 +1,7 @@
+= form_for(@student) do |f|
+  %div
+    = f.label :name
+    = f.text_field :name
+
+  .actions
+    = f.submit "Add Student"
