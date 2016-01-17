@@ -1,12 +1,3 @@
 .row
-  = render 'left_nav'
-
-  %div{ class: 'small-10 columns'}
-    %h1 Students
-
-    %student_list= render @students
-
-    %hr
-
-    %h5 Add New Student
-    %div= render 'form'
+  %div#left_nav_index{ class: 'small-2 columns' }= render 'left_nav_index'
+  %div{ class: 'small-10 columns' } Welcome To Catechumen!

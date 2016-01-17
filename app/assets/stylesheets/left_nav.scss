@@ -1,6 +1,13 @@
 $rock: #685C53;
 $beige: #D4C99E;
 
-#left_nav {
+#left_nav_index {
   background-color: $beige;
+}
+
+.add_student {
+  padding-bottom: .5rem;
+  a {
+    font-size: .8rem;
+  }
 }

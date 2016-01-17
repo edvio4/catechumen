@@ -1173,7 +1173,7 @@ $side-nav-padding: rem-calc(14 0);
 // We use these to control list styles.
 $side-nav-list-type: none;
 $side-nav-list-position: outside;
-$side-nav-list-margin: rem-calc(0 0 7 0);
+$side-nav-list-margin: rem-calc(0 0 6 0);
 
 // We use these to control link styles.
 $side-nav-link-color: $light_brown;
@@ -1181,7 +1181,7 @@ $side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: 30%);
 $side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 10%);
 $side-nav-link-bg-hover: hsla(0, 0, 0, .025);
 $side-nav-link-margin: 0;
-$side-nav-link-padding: rem-calc(7 14);
+$side-nav-link-padding: rem-calc(0 0);
 $side-nav-font-size: rem-calc(18);
 $side-nav-font-weight: $font-weight-normal;
 $side-nav-font-weight-active: $side-nav-font-weight;

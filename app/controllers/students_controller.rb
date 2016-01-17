@@ -1,7 +1,10 @@
 class StudentsController < ApplicationController
   def index
-    @student = Student.new
     @students = Student.all
+  end
+
+  def new
+    @student = Student.new
   end
 
   def show
@@ -31,8 +34,7 @@ class StudentsController < ApplicationController
       redirect_to students_path
     else
       flash[:errors] = @student.errors.full_messages.join(". ")
-      @students = Student.all
-      render :index
+      render :new
     end
   end
 
