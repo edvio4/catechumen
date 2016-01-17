@@ -1,11 +1,12 @@
-%h1 Students
+.row
+  = render 'left_nav'
 
-%ul
-  - @students.each do |student|
-    .student
-      %p.student-name= link_to student.name, student_path(student)
+  %div{ class: 'small-10 columns'}
+    %h1 Students
 
-%hr
+    %student_list= render @students
 
-%h5 Add New Student
-%div= render 'form'
+    %hr
+
+    %h5 Add New Student
+    %div= render 'form'

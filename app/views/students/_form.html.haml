@@ -1,7 +1,9 @@
 = form_for(@student) do |f|
-  %div
-    = f.label :name
-    = f.text_field :name
+  .row
+    %div{ class: "small-5 columns"}
+      = f.label :name
+      = f.text_field :name
 
-  .actions
-    = f.submit "Add Student"
+  .row
+    .actions
+      = f.submit "Add Student"
