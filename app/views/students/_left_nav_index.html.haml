@@ -1,0 +1,9 @@
+%ul{ class: 'side-nav'}
+  %li.heading Students
+  .student_list= render @students
+
+  %li.add_student= link_to "Add Student", new_student_path
+  %li.divider
+  %li.heading Planning
+  %li.calendar= link_to "Calendar", "#"
+  %li.books= link_to "Books", "#"
