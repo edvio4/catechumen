@@ -13,6 +13,8 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  config.include FactoryGirl::Syntax::Methods
+
   # config.use_transactional_fixtures = false
   #
   #   config.before(:suite) do

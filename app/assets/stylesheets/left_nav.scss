@@ -5,8 +5,19 @@ $beige: #D4C99E;
   background-color: $beige;
 }
 
+#left_nav_show {
+  background-color: $beige;
+}
+
 .add_student {
   padding-bottom: .5rem;
+  a {
+    font-size: .8rem;
+  }
+}
+
+.delete_student {
+  padding-top: .5rem;
   a {
     font-size: .8rem;
   }

@@ -1,0 +1,21 @@
+= form_for(@resource) do |f|
+  .resource-form-title
+    = f.label :title
+    = f.text_field :title, placeholder: "Title"
+
+  .resource-form-unit#inline
+    %div= "Enter the total units (letter or number) and select the unit type"
+    = f.label :units, class: "hidden"
+    = f.text_field :units
+
+  .resorce-form-unit-type#inline
+    = f.label :unit_type, class: "hidden"
+    = f.collection_select(:unit_type_id, UnitType.all, :id, :name, prompt: true)
+
+  .resource-form-division
+    = "If each unit is broken down into smaller sections, enter that here (i.e. '4 sections', 'd parts')"
+    = f.label :division_units, class: "hidden"
+    = f.text_field :division_units, placeholder: "'4 sections', 'd parts'"
+
+  .form-actions
+    = f.submit "Add Resource"

@@ -1,16 +1,15 @@
-.show-container
-  %h1.show-title= @student.name
+.row#main_container
+  #left_nav_show{ class: 'small-2 columns' }= render 'left_nav_show'
+  #show_container{ class: 'small-10 columns' }
+    %h2= @student.name
+    .edit_link= link_to "edit", '#'
 
-%div.links
-  %p= link_to "Edit", '#'
-  %p= link_to "Delete", @student, method: :delete
-
--# %div= render 'reviews/form'
--#
--# - if !@reviews.nil?
--#   %ul
--#     - @reviews.each do |review|
--#       -if !review.title.empty?
--#         %li= review.title
--#         %li= review.body
--#         %li= "written by: #{review.user.username}"
+    -# %div= render 'reviews/form'
+    -#
+    -# - if !@reviews.nil?
+    -#   %ul
+    -#     - @reviews.each do |review|
+    -#       -if !review.title.empty?
+    -#         %li= review.title
+    -#         %li= review.body
+    -#         %li= "written by: #{review.user.username}"
