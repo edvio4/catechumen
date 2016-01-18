@@ -3,14 +3,14 @@
     = f.label :title
     = f.text_field :title, placeholder: "Title"
 
-  .resource-form-unit#inline
+  %div{ class: "resource-form-unit inline" }
     %div= "Enter the total units (letter or number) and select the unit type"
     = f.label :units, class: "hidden"
-    = f.text_field :units
+    = f.text_field :units, class: "resource_unit inline"
 
-  .resorce-form-unit-type#inline
+  %div{ class: "resorce-form-unit-type inline" }
     = f.label :unit_type, class: "hidden"
-    = f.collection_select(:unit_type_id, UnitType.all, :id, :name, prompt: true)
+    = f.collection_select(:unit_type_id, UnitType.all, :id, :name, { prompt: true }, { class: "inline" } )
 
   .resource-form-division
     = "If each unit is broken down into smaller sections, enter that here (i.e. '4 sections', 'd parts')"
