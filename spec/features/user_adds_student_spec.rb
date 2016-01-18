@@ -16,7 +16,7 @@ feature "users can add a new student" do
   end
 
   scenario "user enters name that is already in database" do
-    student = FactoryGirl.create(:student)
+    student = create(:student)
     visit new_student_path
     fill_in 'Name', with: student.name
 

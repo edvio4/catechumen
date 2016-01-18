@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+['Lessons', 'Pages', 'Sections', 'Units', 'Modules'].each do |name|
+  UnitType.create( name: name )
+end

@@ -1,0 +1,21 @@
+.hidden {
+  display: none;
+}
+
+.inline {
+  display: inline;
+}
+
+form input[id=resource_units] {
+  width: 10%;
+  display: inline;
+}
+
+form select[id=resource_unit_type_id] {
+  width: 20%;
+  display: inline;
+}
+
+.field_with_errors {
+  display: inline;
+}

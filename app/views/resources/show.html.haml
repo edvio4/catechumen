@@ -1,0 +1,5 @@
+.row#main_container
+  #left_nav_index{ class: 'small-2 columns' }= render 'students/left_nav_index'
+  #resource_show_conatiner{ class: 'small-10 columns' }
+    %h1= "#{@resource.title}"
+    .resource_type= "#{@resource.units} #{@resource.unit_type.name}"
