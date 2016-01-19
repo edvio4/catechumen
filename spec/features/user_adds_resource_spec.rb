@@ -21,7 +21,7 @@ feature "users can add a new resource" do
     scenario "when title is blank" do
       visit new_resource_path
       fill_in 'Units', with: units
-      select "Lessons", from: "resource_unit_type_id"
+      select unit_type.name, from: "resource_unit_type_id"
       click_button "Add Resource"
 
       expect(page).to have_content "Title can't be blank"
