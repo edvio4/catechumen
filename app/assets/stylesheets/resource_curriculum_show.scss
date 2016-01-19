@@ -1,14 +1,14 @@
 @import 'color';
 
-a {
-  .resources_container & {
-    color: $brick;
-  }
-  .resources_container &:hover {
+
+.resources_container a, .curriculum_container a {
+  color: $brick;
+  &:hover {
     color: lighten( $brick, 10% );
     text-decoration: underline;
   }
 }
+
 
 li {
   list-style-type: none;
