@@ -6,14 +6,18 @@
   display: inline;
 }
 
-form input[id=resource_units] {
+form {
+  & input[id=resource_units], & input[id=resource_division_units] {
   width: 10%;
   display: inline;
+  }
 }
 
-form select[id=resource_unit_type_id] {
+form {
+  & select[id=resource_unit_type_id], & select[id=resource_division_type_id] {
   width: 20%;
   display: inline;
+  }
 }
 
 .field_with_errors {

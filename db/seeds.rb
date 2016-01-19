@@ -9,3 +9,7 @@
 ['Lessons', 'Pages', 'Sections', 'Units', 'Modules'].each do |name|
   UnitType.create( name: name )
 end
+
+['Sections', 'Units', 'Parts', 'Modules'].each do |name|
+  DivisionType.create( name: name )
+end

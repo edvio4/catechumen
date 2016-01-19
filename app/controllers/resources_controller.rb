@@ -51,6 +51,6 @@ class ResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:resource).permit(:title, :units, :division_units, :unit_type_id)
+    params.require(:resource).permit(:title, :units, :division_units, :unit_type_id, :division_type_id)
   end
 end
