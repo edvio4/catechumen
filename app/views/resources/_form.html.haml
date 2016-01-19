@@ -3,24 +3,28 @@
     = f.label :title
     = f.text_field :title, placeholder: "Title"
 
+    %div{ class: "resource-form-subject" }
+      = f.label :subject
+      = f.collection_select(:subject_id, Subject.order(:name), :id, :name, { prompt: true })
+
   %div{ class: "resource-form-unit inline" }
-    %div= "Enter the total units (letter or number) and select the unit type"
+    .input_instructions= "Enter the total units (letter or number) and select the unit type"
     = f.label :units, class: "hidden"
     = f.text_field :units, class: "resource_unit inline"
 
   %div{ class: "resorce-form-unit-type inline" }
     = f.label :unit_type, class: "hidden"
-    = f.collection_select(:unit_type_id, UnitType.all, :id, :name, { prompt: true }, { class: "inline" } )
+    = f.collection_select(:unit_type_id, UnitType.order(:name), :id, :name, { prompt: true }, { class: "inline" } )
 
   %div{ class: "resource-form-division-unit inline" }
-    %div= "If each unit is broken down into smaller sections, enter that here."
-    %div= "Enter the total division units (letter or number) and select the division unit type"
+    .input_instructions= "If each unit is broken down into smaller sections, enter that here."
+    .input_instructions= "Enter the total division units (letter or number) and select the division unit type"
     = f.label :division_units, class: "hidden"
     = f.text_field :division_units, class: "resource_unit inline"
 
   %div{ class: "resorce-form-division-unit-type inline" }
     = f.label :division_type, class: "hidden"
-    = f.collection_select(:division_type_id, DivisionType.all, :id, :name, { prompt: true }, { class: "inline" } )
+    = f.collection_select(:division_type_id, DivisionType.order(:name), :id, :name, { prompt: true, include_blank: 'None' }, { class: "inline" } )
 
   .form-actions
     = f.submit "Add Resource"

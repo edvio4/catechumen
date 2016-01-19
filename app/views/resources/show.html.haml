@@ -1,5 +1,5 @@
 %div{ class: "row main_container" }
-  %div{ class: 'small-2 columns left_nav' }= render 'students/left_nav_index'
+  = render 'students/left_nav'
   #resource_show_conatiner{ class: 'small-10 columns' }
     %h1= "#{@resource.title}"
     .resource_type= "#{@resource.units} #{@resource.unit_type.name}"

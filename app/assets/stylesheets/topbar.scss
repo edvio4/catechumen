@@ -1,8 +1,11 @@
-.top-bar {
+@import 'color';
+
+.menu-text {
+  padding: 0rem 1rem;
   & a {
   font-size: 1.1rem;
-  }
-  & .menu-text {
-    padding: 0rem 1rem;
+    &:hover {
+      color: lighten( $brick, 10% );
+    }
   }
 }

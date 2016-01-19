@@ -5,7 +5,8 @@ class CreateResources < ActiveRecord::Migration
       t.string :units, null: false
       t.integer :unit_type_id, null: false
       t.string :division_units
-      t.string :division_type_id
+      t.integer :division_type_id
+      t.integer :subject_id, null: false
 
       t.timestamps null: false
     end

@@ -16,5 +16,10 @@ FactoryGirl.define do
     name 'Parts'
   end
 
+  factory :subject do
+    name 'Math'
+  end
+
+
 
 end

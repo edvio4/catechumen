@@ -13,3 +13,7 @@ end
 ['Lessons', 'Sections', 'Units', 'Parts', 'Modules'].each do |name|
   DivisionType.create( name: name )
 end
+
+['Math', 'Grammar', 'Reading', 'Spelling', 'Handwriting'].each do |name|
+  Subject.create( name: name )
+end

@@ -1,10 +1,12 @@
 class Resource < ActiveRecord::Base
   belongs_to :unit_type
   belongs_to :division_type
+  belongs_to :subject
 
   validates :title, presence: true, uniqueness: true
   validates :units, presence: true, format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" }
   validates :unit_type_id, presence: true
+  validates :subject, presence: true
   validates :division_units,
     presence: { message: "You selected a division type, but forgot to enter the division units"}, if: :division_type_selected?,
     format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" }
@@ -18,10 +20,10 @@ class Resource < ActiveRecord::Base
   end
 
   def division_units_filled?
-    !division_units.empty?
+    division_units.nil? ? false : !division_units.empty?
   end
 
   def division_type_selected?
-    !division_type_id.empty?
+    division_type_id.nil? ? false : !division_type_id.to_s.empty?
   end
 end
