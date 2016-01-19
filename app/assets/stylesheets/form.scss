@@ -1,3 +1,5 @@
+@import 'color';
+
 .hidden {
   display: none;
 }
@@ -22,4 +24,8 @@ form {
 
 .field_with_errors {
   display: inline;
+}
+
+.input_instructions {
+  font-size: .875rem;
 }

@@ -1,0 +1,28 @@
+@import 'color';
+
+a {
+  .resources_container & {
+    color: $brick;
+  }
+  .resources_container &:hover {
+    color: lighten( $brick, 10% );
+    text-decoration: underline;
+  }
+}
+
+li {
+  list-style-type: none;
+  font-size: 1rem;
+}
+
+.subject_heading {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: $rock;
+}
+
+h1 {
+  color: $rock;
+  font-size: 2.1rem;
+  font-weight: bold;
+}

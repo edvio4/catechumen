@@ -1,8 +1,8 @@
 %div{ class: "row main_container" }
-  %div{ class: 'small-2 columns left_nav' }= render 'left_nav_show'
+  = render 'left_nav'
+  = render 'student_menu'
   %div{ class: 'small-10 columns show_container' }
-    %h2= @student.name
-    .edit_link= link_to "edit", '#'
+    %h2= "#{@student.name}'s Page"
 
     -# %div= render 'reviews/form'
     -#

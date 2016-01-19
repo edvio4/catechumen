@@ -1,7 +1,7 @@
 class ResourcesController < ApplicationController
   def index
     @students = Student.all
-    @resources = Resource.all
+    @resources_by_subject = Subject.order(:name)
   end
 
   def new
@@ -20,7 +20,6 @@ class ResourcesController < ApplicationController
 
   def update
     @resource = Resource.find(params[:id])
-
     if @resource.update_attributes(resource_params)
       flash[:notice] = "Resource edited successfully"
       redirect_to resource_path(@resource)
@@ -35,7 +34,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.new(resource_params)
     if @resource.save
       flash[:notice] = "Resource added successfully"
-      redirect_to resource_path(@resource)
+      redirect_to resources_path
     else
       flash[:errors] = @resource.errors.full_messages.join(". ")
       render :new
@@ -51,6 +50,6 @@ class ResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:resource).permit(:title, :units, :division_units, :unit_type_id, :division_type_id)
+    params.require(:resource).permit(:title, :units, :division_units, :unit_type_id, :division_type_id, :subject_id)
   end
 end
