@@ -1,16 +1,13 @@
-%nav.top-bar{"data-topbar": "", role: "navigation"}
-  %ul.title-area
-    %li.name
+%div{ class: "top-bar" }
+  %div{ class: "top-bar-left menu-text"}= link_to 'Catechumen', root_path
+  -# %span{ class: "right" } Right
 
-      %h1#catechumen
-        %a#home{href: root_path} Catechumen
-
-    / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
-    %li.toggle-topbar.menu-icon
-      %a{:href => "#"}
-        %span Menu
-  %section.top-bar-section
-    / Right Nav Section
+  -# / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+  -#   %li.toggle-topbar.menu-icon
+  -#     %a{:href => "#"}
+  -#       %span Menu
+  -# %section.top-bar-section
+    -# / Right Nav Section
     -# %ul.right
     -#   %li.active
     -#     %a{:href => "#"} Right Button Active
@@ -22,7 +19,7 @@
     -#         %ul.dropdown
     -#           %li= link_to 'Sign In', new_user_session_path
     -#           %li.active= link_to 'Sign Up', new_user_registration_path
-    / Left Nav Section
-    %ul.left
-      %li
-        %a{:href => "#"} Left Nav Button
+    -# / Left Nav Section
+  -# %ul.left
+  -#     %li
+  -#       %a{:href => "#"} Left Nav Button

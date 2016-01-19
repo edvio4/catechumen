@@ -12,4 +12,9 @@ FactoryGirl.define do
     name 'Lessons'
   end
 
+  factory :division_type do
+    name 'Parts'
+  end
+
+
 end

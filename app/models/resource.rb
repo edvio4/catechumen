@@ -1,15 +1,15 @@
 class Resource < ActiveRecord::Base
   belongs_to :unit_type
-
-  before_validation :parse_division_units
-  after_validation :rejoin_division_units, unless: :errors_empty?
+  belongs_to :division_type
 
   validates :title, presence: true, uniqueness: true
   validates :units, presence: true, format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" }
   validates :unit_type_id, presence: true
-  validates :division_units, format: { with: /[a-zA-Z]|\d+/, message: "Please check your 'units' input. See examples" }, allow_blank: true
-  validates :division_type, format: { with: /([a-zA-Z])+/, message: "only allows letters" }, allow_blank: true
-
+  validates :division_units,
+    presence: { message: "You selected a division type, but forgot to enter the division units"}, if: :division_type_selected?,
+    format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" }
+  validates :division_type_id,
+    presence: { message: "You entered division units, but forgot to select a division type"}, if: :division_units_filled?
 
   private
 
@@ -17,25 +17,11 @@ class Resource < ActiveRecord::Base
     self.errors.empty?
   end
 
-
-  def parse_division_units
-    unless division_units.nil?
-      unless division_units.empty?
-        division_units_parsed = division_units.split(" ")
-        if division_units_parsed.length > 1
-          self.division_units = division_units_parsed[0]
-          self.division_type = division_units_parsed[1].capitalize
-        end
-      end
-    end
+  def division_units_filled?
+    !division_units.empty?
   end
 
-  def rejoin_division_units
-    unless division_type.nil?
-      unless (division_units.empty? && division_type.empty?)
-        division_units_rejoined = division_units + " " + division_type.downcase
-        self.division_units = division_units_rejoined
-      end
-    end
+  def division_type_selected?
+    !division_type_id.empty?
   end
 end

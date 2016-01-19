@@ -5,13 +5,11 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %title= content_for?(:title) ? yield(:title) : "foundation-rails"
     = stylesheet_link_tag    "application"
-    = javascript_include_tag "vendor/modernizr"
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
     %div= render 'layouts/topbar'
     - flash.each do |type, message|
       .flash= message
-    %nav
 
     = yield

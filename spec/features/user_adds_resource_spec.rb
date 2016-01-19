@@ -2,8 +2,9 @@ require "rails_helper"
 
 feature "users can add a new resource" do
   let!(:unit_type) { create(:unit_type) }
-  let!(:title) { "RightStart Math Level A" }
-  let!(:units) { "325" }
+  let!(:division_type) { create(:division_type) }
+  let(:title) { "RightStart Math Level A" }
+  let(:units) { "325" }
 
   scenario "user adds new resource successfully" do
     visit new_resource_path
@@ -21,7 +22,7 @@ feature "users can add a new resource" do
     scenario "when title is blank" do
       visit new_resource_path
       fill_in 'Units', with: units
-      select "Lessons", from: "resource_unit_type_id"
+      select unit_type.name, from: "resource_unit_type_id"
       click_button "Add Resource"
 
       expect(page).to have_content "Title can't be blank"
@@ -45,9 +46,8 @@ feature "users can add a new resource" do
       expect(page).to have_content "Unit type can't be blank"
     end
 
-
     scenario "user enters resource that is already in database" do
-      resource = create(:resource, unit_type: unit_type)
+      resource = create(:resource, unit_type: unit_type, division_units: "", division_type_id: "")
       visit new_resource_path
       fill_in 'Title', with: resource.title
       fill_in 'Units', with: resource.units
@@ -56,6 +56,30 @@ feature "users can add a new resource" do
       click_button "Add Resource"
 
       expect(page).to have_content "Title has already been taken"
+    end
+
+    scenario "user enters division units but selects no division type" do
+      visit new_resource_path
+      fill_in 'Title', with: title
+      fill_in 'Units', with: units
+      select unit_type.name, from: "resource_unit_type_id"
+      fill_in 'Division units', with: units
+
+      click_button "Add Resource"
+
+      expect(page).to have_content "You entered division units, but forgot to select a division type"
+    end
+
+    scenario "user selects division type but enters no division units" do
+      visit new_resource_path
+      fill_in 'Title', with: title
+      fill_in 'Units', with: units
+      select unit_type.name, from: "resource_unit_type_id"
+      select division_type.name, from: "resource_division_type_id"
+
+      click_button "Add Resource"
+
+      expect(page).to have_content "You selected a division type, but forgot to enter the division units"
     end
   end
 end
