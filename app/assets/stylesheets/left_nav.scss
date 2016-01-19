@@ -1,24 +1,43 @@
 $rock: #685C53;
 $beige: #D4C99E;
+$brick: #A25016;
 
-#left_nav_index {
+.left_nav {
   background-color: $beige;
+  a, & {
+    color: $brick;
+  }
+  a:hover {
+    color: lighten( $brick, 10% );
+  }
+  .heading {
+    padding-top: .8rem;
+    font-weight: bold;
+  }
 }
 
-#left_nav_show {
-  background-color: $beige;
+.left_nav a, .left_nav .heading {
+  font-size: 1.1rem;
+}
+
+hr {
+  height: 1px;
+  color: $rock;
+  background-color: $rock;
+  border: none;
+  margin: 0px;
 }
 
 .add_student {
-  padding-bottom: .5rem;
+  padding-bottom: .8rem;
   a {
-    font-size: .8rem;
+  font-size: .85rem;
   }
 }
 
 .delete_student {
-  padding-top: .5rem;
+  padding-bottom: .8rem;
   a {
-    font-size: .8rem;
+    font-size: .85rem;
   }
 }

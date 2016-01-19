@@ -1,6 +1,6 @@
-.row#main_container
-  #left_nav_index{ class: 'small-2 columns' }= render 'students/left_nav_index'
-  #resources_container{ class: 'small-10 columns' }
+%div{ class: "row main_container" }
+  %div{ class: 'small-2 columns left_nav' }= render 'students/left_nav_index'
+  %div{ class: 'small-10 columns resources_container' }
     %h1 Resources
 
     .add_resource_link= link_to 'Add New Resource', new_resource_path

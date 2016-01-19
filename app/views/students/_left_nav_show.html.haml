@@ -1,6 +1,6 @@
-%ul{ class: 'vertical menu-bar'}
+%ul{ class: 'vertical menu'}
   %li.heading Planning
-  %li.calendar= link_to "Calendar", "#"
-  %li.courses= link_to "Subjects", "#"
-  %li.books= link_to "Curriculum", "#"
-  %li.delete_student= link_to "Delete Student", @student, method: :delete
+  %div{ class: "calendar link" }= link_to "Calendar", "#"
+  %div{ class: "courses link" }= link_to "Subjects", "#"
+  %div{ class: "books link" }= link_to "Curriculum", "#"
+  %div{ class: "delete_student link" }= link_to "Delete Student", @student, method: :delete
