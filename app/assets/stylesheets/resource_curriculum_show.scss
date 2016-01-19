@@ -9,13 +9,12 @@
   }
 }
 
-
 li {
   list-style-type: none;
   font-size: 1rem;
 }
 
-.subject_heading {
+.subject_heading, .course_heading {
   font-weight: bold;
   font-size: 1.5rem;
   color: $rock;
