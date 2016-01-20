@@ -2,6 +2,8 @@ class Resource < ActiveRecord::Base
   belongs_to :unit_type
   belongs_to :division_type
   belongs_to :subject
+  has_many :curriculums
+  has_many :students, through: :curriculums
 
   validates :title, presence: true, uniqueness: true
   validates :units, presence: true, format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" }

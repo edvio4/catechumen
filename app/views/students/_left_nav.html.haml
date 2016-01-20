@@ -1,9 +1,0 @@
-%div{ class: 'small-2 columns left_nav' }
-  %ul{ class: 'vertical menu'}
-    %li.heading Students
-    .student_list= render @students
-    %div{ class: "add_student link" }= link_to "Add Student", new_student_path
-    %hr.line
-    %li.heading Planning
-    %div{ class: "calendar link" }= link_to "Calendar", "#"
-    %div{ class: "resources link" }= link_to "Resources", resources_path

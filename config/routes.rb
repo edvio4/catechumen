@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :students, only: [:new, :index, :show, :create, :update, :destroy]
-  resources :resources, only: [:new, :index, :show, :create, :update, :destroy]
+  resources :resources, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
+  resources :students, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :curriculums, only: [:index, :show, :create, :destroy]
+  end
+  
   root 'students#index'
 
 end

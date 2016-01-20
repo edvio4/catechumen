@@ -1,0 +1,7 @@
+= form_for [@student, @curriculum] do |f|
+  %div{ class: "curriculum-form-resources" }
+    = f.label :resources, class: "hidden"
+    = f.collection_select(:resource_id, Resource.order(:title), :id, :title, { prompt: true })
+
+  .form-actions
+    = f.submit "Add Curriculum"
