@@ -3,9 +3,9 @@
     = f.label :title
     = f.text_field :title, placeholder: "Title"
 
-    %div{ class: "resource-form-subject" }
-      = f.label :subject
-      = f.collection_select(:subject_id, Subject.order(:name), :id, :name, { prompt: true })
+  %div{ class: "resource-form-subject" }
+    = f.label :subject
+    = f.collection_select(:subject_id, Subject.order(:name), :id, :name, { prompt: true })
 
   %div{ class: "resource-form-unit inline" }
     .input_instructions= "Enter the total units (letter or number) and select the unit type"
