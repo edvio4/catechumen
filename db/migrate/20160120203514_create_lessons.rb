@@ -6,6 +6,8 @@ class CreateLessons < ActiveRecord::Migration
       t.string :division_unit
       t.string :date_completed
       t.string :scheduled_date
+
+      t.timestamps null: false
     end
   end
 end
