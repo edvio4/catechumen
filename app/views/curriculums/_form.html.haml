@@ -1,7 +1,11 @@
 = form_for [@student, @curriculum] do |f|
-  %div{ class: "curriculum-form-resources" }
+  .curriculum-form-resources
     = f.label :resources, class: "hidden"
-    = f.collection_select(:resource_id, Resource.order(:title), :id, :title, { prompt: true })
+    = f.select :resource_id, grouped_options_for_select(@grouped_options), { prompt: true }
 
   .form-actions
     = f.submit "Add Curriculum"
+
+  %div
+  = "If the Resource you want to add is not listed, then"
+  = link_to 'Add New Resource', new_resource_path

@@ -1,7 +1,7 @@
 class ResourcesController < ApplicationController
   def index
     @students = Student.all
-    @resources_by_subject = Subject.order(:name)
+    @resources_by_subject = Subject.joins(:resources).group('subjects.id').order(:name)
   end
 
   def new
