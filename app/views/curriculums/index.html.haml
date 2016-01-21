@@ -6,7 +6,5 @@
 
     = render partial: "curriculums_by_subject", collection: @curriculums_by_subject, as: :subject
 
-    %div
-      = "Select below to add a resource to #{@student.name}'s curriculum. If the Resource you want to add is not listed, then"
-      = link_to 'Add New Resource', new_resource_path
+    %div= "Select below to add a resource to #{@student.name}'s curriculum."
     = render 'form'

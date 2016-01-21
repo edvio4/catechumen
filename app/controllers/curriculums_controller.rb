@@ -1,9 +1,13 @@
+require_relative '../models/create_curriculum_form_options'
+
 class CurriculumsController < ApplicationController
   def index
     @student = Student.find(params[:student_id])
     @students = Student.all
     @curriculum = Curriculum.new
-    @resources = Resource.all
+    @resources = Resource.joins(:curriculums).where.not(curriculums: { student: @student } ).order(:title)
+
+    @grouped_options = CreateCurriculumFormOptions.new(@student).create_grouped_options
     @curriculums_by_subject = @student.subjects.order(:name).uniq
   end
 
@@ -32,6 +36,7 @@ class CurriculumsController < ApplicationController
     @student = Student.find(params[:student_id])
     @curriculum = Curriculum.new(resource_id: curriculum_params[:resource_id], student: @student)
     if @curriculum.save
+      CreateCurriculumLessons.new(@curriculum)
       flash[:notice] = "Curriculum added successfully"
       redirect_to student_curriculums_path(@student)
     else

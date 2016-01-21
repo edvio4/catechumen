@@ -1,6 +1,5 @@
-- if !subject.resources.empty?
-  - resources = subject.resources.order(:title)
-  %ul.resource_list
-    .subject_heading= subject.name
-    - resources.each do |resource|
-      %li.resource_title= link_to resource.title, resource_path(resource)
+- resources = subject.resources.order(:title)
+%ul.resource_list
+  .subject_heading= subject.name
+  - resources.each do |resource|
+    %li.resource_title= link_to resource.title, resource_path(resource)
