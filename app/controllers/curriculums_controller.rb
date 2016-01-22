@@ -15,6 +15,7 @@ class CurriculumsController < ApplicationController
   def show
     @students = Student.all
     @curriculum = Curriculum.find(params[:id])
+    @student  = @curriculum.student
   end
 
   def edit
