@@ -26,15 +26,19 @@ ActiveRecord::Schema.define(version: 20160120203514) do
   end
 
   create_table "division_types", force: :cascade do |t|
-    t.string "name", null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lessons", force: :cascade do |t|
-    t.integer "curriculum_id",  null: false
-    t.string  "unit",           null: false
-    t.string  "division_unit"
-    t.string  "date_completed"
-    t.string  "scheduled_date"
+    t.integer  "curriculum_id",  null: false
+    t.string   "unit",           null: false
+    t.string   "division_unit"
+    t.string   "date_completed"
+    t.string   "scheduled_date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "resources", force: :cascade do |t|
@@ -55,11 +59,15 @@ ActiveRecord::Schema.define(version: 20160120203514) do
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.string "name", null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "unit_types", force: :cascade do |t|
-    t.string "name", null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
