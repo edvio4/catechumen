@@ -30,7 +30,7 @@ class CreateCurriculumLessons
       Lesson.create(curriculum: @curriculum, unit: unit) if division_units.empty?
       unless division_units.empty?
         number_of_divisions.times do |j|
-          division_unit = division_flag == "number" ? j+1 : ( division_flag == "upper" ? alphabet[j].upcase : alphabet[j])
+          division_unit = division_flag == "number" ? j+1 : ( division_flag == "upper" ? alphabet[j].upcase : alphabet[j] )
           Lesson.create(curriculum: @curriculum, unit: unit, division_unit: division_unit)
         end
       end
@@ -38,6 +38,6 @@ class CreateCurriculumLessons
   end
 
   def is_number?(string)
-    return string =~ /\d+/
+    string =~ /\d+/
   end
 end

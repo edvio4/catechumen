@@ -1,5 +1,6 @@
 %ul.curriculum_list
   .subject_heading= subject.name
-  - curriculums = @student.resources.where(subject: subject).order(:title)
-  - curriculums.each do |curriculum|
-    %li.curriculum_title= link_to curriculum.title, student_curriculum_path(@student, curriculum)
+  - student_resources = @student.resources.where(subject: subject).order(:title)
+  - student_resources.each do |resource|
+    - curriculum = Curriculum.where(student: @student, resource: resource).first 
+    %li.curriculum_title= link_to resource.title, curriculum_path(curriculum)

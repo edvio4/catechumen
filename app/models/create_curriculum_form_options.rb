@@ -30,20 +30,20 @@ class CreateCurriculumFormOptions
   def get_subjects
     subjects_joins = Subject.joins(:resources).joins('LEFT JOIN "curriculums" ON "curriculums"."resource_id" = "resources"."id"')
     subjects_joins.where(
-    subjects_joins.where(curriculums: { resource: nil })
-    .where.not(curriculums: { student: @student })
-    .where_values.reduce(:or)
-    )
+      subjects_joins
+      .where(curriculums: { resource: nil })
+      .where.not(curriculums: { student: @student })
+      .where_values.reduce(:or))
     .group('subjects.id').order(:name)
   end
 
   def get_resources(subject)
-    resources_joins = Resource.where(subject: subject).joins('LEFT JOIN "curriculums" ON "curriculums"."resource_id" = "resources"."id"')
-    group_resources = resources_joins.where(
-        resources_joins.where(curriculums: { resource: nil })
-        .where.not(curriculums: { student: @student })
-        .where_values.reduce(:or)
-      )
-      .order(:title)
+    resources_joins = Resource.joins('LEFT JOIN "curriculums" ON "curriculums"."resource_id" = "resources"."id"')
+    resources_joins.where(
+      resources_joins.where(
+      curriculums: { resource: nil })
+      .where.not(curriculums: { student: @student })
+      .where_values.reduce(:or))
+    .where(subject: subject).order(:title)
   end
 end

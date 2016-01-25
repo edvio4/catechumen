@@ -1,0 +1,31 @@
+%div{ class: "row main_container" }
+  = render 'layouts/left_nav'
+  = render 'students/student_menu'
+
+  #curriculm_show_conatiner{ class: 'small-10 columns' }
+    %h3= "#{@student.name}'s Schedule for '#{@curriculum.resource.title}'"
+
+    %hr
+    %h4 Curriculum Details
+    %li.curriculum_units= "#{@curriculum.resource.units} #{@curriculum.resource.unit_type.name}"
+    - unless @curriculum.resource.division_type.nil?
+      %li.curriculum_divisions= "#{@curriculum.resource.division_units} #{@curriculum.resource.division_type.name}"
+
+    %hr
+    %h4 Curriculum Schedule
+    - if @curriculum.schedule.nil?
+      %div
+        = "There is no schedule for this curriculum."
+        = link_to "Set Schedule", new_curriculum_schedule_path(@curriculum)
+    - else
+      - i=0
+      - count = @lessons.length/4 + 1
+      - while i < @lessons.length
+        %div{ class: 'small-3 columns'}
+          - count.times do
+            - if @lessons[i].curriculum.resource.division_type_id.nil?
+              %li= "#{@lessons[i].curriculum.resource.unit_type.name.singularize} #{@lessons[i].unit}, Schedule Date: #{@lessons[i].scheduled_date}"
+            - else
+              %li= "#{@lessons[i].curriculum.resource.unit_type.name.singularize} #{@lessons[i].unit}, #{@lessons[i].curriculum.resource.division_type.name.singularize} #{@lessons[i].division_unit}, Schedule Date: #{@lessons[i].scheduled_date}"
+            - i+=1
+            - break if i == @lessons.length

@@ -1,0 +1,13 @@
+= form_tag("/curriculums/#{@curriculum.id}/schedules", method: 'POST') do
+  .curriculum-form-start-date
+    = "Enter Start Date"
+    = date_field :schedule, :start_date
+
+  .curriculum-form-pace
+    = "How many units/'division units' do you plan to do each day?"
+    = collection_select(:schedule, :pace_id, Pace.all, :id, :pace, { prompt: true })
+
+  .recurrence-form-days
+    = collection_check_boxes(:recurrence, :day_id, Occurrence.all, :id, :day)
+
+  %div= submit_tag 'Set Schedule'

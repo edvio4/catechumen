@@ -5,5 +5,7 @@ class CreateSubjects < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :subjects, :name, unique: true
   end
 end
