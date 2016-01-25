@@ -9,10 +9,11 @@ class Resource < ActiveRecord::Base
   validates :units, presence: true, format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" }
   validates :unit_type_id, presence: true
   validates :subject, presence: true
-  validates :division_units, allow_blank: true, allow_nil: false,
+  validates :division_units,
     presence: { message: "You selected a division type, but forgot to enter the division units"}, if: :division_type_selected?,
-    format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" }
-  validates :division_type_id, allow_blank: true, allow_nil: true,
+    format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" },
+    allow_nil: false
+  validates :division_type_id,
     presence: { message: "You entered division units, but forgot to select a division type"}, if: :division_units_filled?
 
   private

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20160122184730) do
   create_table "curriculums", force: :cascade do |t|
     t.integer  "resource_id",                    null: false
     t.integer  "student_id",                     null: false
+    t.integer  "schedule_id"
     t.string   "date_completed", default: "",    null: false
     t.boolean  "completed",      default: false
     t.datetime "created_at",                     null: false
@@ -42,6 +43,7 @@ ActiveRecord::Schema.define(version: 20160122184730) do
     t.string   "date_completed", default: "",    null: false
     t.boolean  "completed",      default: false
     t.string   "scheduled_date", default: "",    null: false
+    t.integer  "duration",       default: 0,     null: false
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end

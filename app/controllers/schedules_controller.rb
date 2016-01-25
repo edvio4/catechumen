@@ -1,3 +1,6 @@
+require_relative '../models/create_new_recurrence'
+require_relative '../models/make_schedule_for_curriculum'
+
 class SchedulesController < ApplicationController
   def new
     @students = Student.all
@@ -7,26 +10,29 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    binding.pry
-    # @students = Student.all
-    # @curriculum = Curriculum.find(params[:curriculum_id])
-    # @resource = Resource.new(resource_params)
-    # if @resource.save
-    #   flash[:notice] = "Resource added successfully"
-    #   redirect_to resources_path
-    # else
-    #   flash[:errors] = @resource.errors.full_messages.join(". ")
-    #   render :new
-    # end
+    @students = Student.all
+    @curriculum = Curriculum.find(params[:curriculum_id])
+    @student  = @curriculum.student
+    @schedule = Schedule.new(start_date: schedule_params[:start_date], pace_id: schedule_params[:pace_id], curriculum: @curriculum)
+    if @schedule.save
+      @curriculum.update_attributes(schedule: @schedule)
+      CreateNewRecurrence.new(recurrence_params[:day_id], @schedule)
+      MakeScheduleForCurriculum.new(@curriculum)
+      flash[:notice] = "Schedule added successfully"
+      redirect_to curriculum_path(@curriculum)
+    else
+      flash[:errors] = @schedule.errors.full_messages.join(". ")
+      render :new
+    end
   end
 
   private
 
-  def curriculum_params
+  def schedule_params
     params.require(:schedule).permit(:start_date, :pace_id)
   end
 
   def recurrence_params
-    params.require(:recurrence).permit(:day_id)
+    params.require(:recurrence).permit(day_id: [])
   end
 end

@@ -1,7 +1,7 @@
 class Curriculum < ActiveRecord::Base
   belongs_to :resource
   belongs_to :student
-  has_one :schedule
+  belongs_to :schedule
   has_many :lessons
   has_many :recurrences, through: :schedule
 

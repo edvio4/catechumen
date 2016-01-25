@@ -7,6 +7,7 @@ class CreateLessons < ActiveRecord::Migration
       t.string :date_completed, null: false, default: ""
       t.boolean :completed, default: false
       t.string :scheduled_date, null: false, default: ""
+      t.integer :duration, null: false, default: 0
 
       t.timestamps null: false
     end

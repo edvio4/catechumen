@@ -16,6 +16,7 @@ class CurriculumsController < ApplicationController
     @students = Student.all
     @curriculum = Curriculum.find(params[:id])
     @student  = @curriculum.student
+    @lessons = order_lessons(@curriculum)
   end
 
   def edit
@@ -56,5 +57,31 @@ class CurriculumsController < ApplicationController
 
   def curriculum_params
     params.require(:curriculum).permit(:resource_id)
+  end
+
+  def order_lessons(curriculum)
+    resource = curriculum.resource
+    lessons = curriculum.lessons
+    if resource.division_units.empty?
+      if is_number?(resource.units)
+        return lessons.order('unit::int')
+      else
+        return lessons.order(:unit)
+      end
+    else
+      if is_number?(resource.units) && is_number?(resource.division_units)
+        return lessons.order('unit::int, division_unit::int')
+      elsif is_number?(resource.units) && !is_number?(resource.division_units)
+        return lessons.order('unit::int').order(:division_unit)
+      elsif !is_number?(resource.units) && is_number?(resource.division_units)
+        return lessons.order(:unit).order('division_unit::int')
+      else
+        return lessons.order(:unit, :division_unit)
+      end
+    end
+  end
+
+  def is_number?(string)
+    string =~ /\d+/
   end
 end

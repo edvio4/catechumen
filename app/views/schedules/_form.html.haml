@@ -1,7 +1,7 @@
-= form_tag("/curriculums/#{@curriculum.id}/schedules", method: 'POST' ) do
+= form_tag("/curriculums/#{@curriculum.id}/schedules", method: 'POST') do
   .curriculum-form-start-date
     = "Enter Start Date"
-    = text_field :schedule, :start_date, placeholder: "DD/MM/YY"
+    = date_field :schedule, :start_date
 
   .curriculum-form-pace
     = "How many units/'division units' do you plan to do each day?"

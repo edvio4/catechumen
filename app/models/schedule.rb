@@ -1,5 +1,7 @@
 class Schedule < ActiveRecord::Base
-  has_one :curriculum
+
+  belongs_to :pace
+  belongs_to :curriculum
   has_many :lessons, through: :curriculum
   has_many :recurrences
   has_many :occurrences, through: :recurrences
