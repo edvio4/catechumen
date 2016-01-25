@@ -5,8 +5,7 @@ class Lesson < ActiveRecord::Base
     format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" },
     uniqueness: { scope: [:curriculum, :division_unit] }
   validates :division_unit, allow_blank: true, allow_nil: true,
-  format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" },
-  uniqueness: { scope: [:curriculum, :unit] }
+    format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" }
 
   private
 
