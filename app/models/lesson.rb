@@ -7,10 +7,15 @@ class Lesson < ActiveRecord::Base
   validates :division_unit, allow_blank: true, allow_nil: true,
     format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" }
 
+  def start_time
+    self.scheduled_date
+  end
+  
   private
 
   def has_division?
     return true if division_unit.nil?
     division_unit.empty?
   end
+
 end

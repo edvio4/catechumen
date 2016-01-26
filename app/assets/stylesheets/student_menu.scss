@@ -1,9 +1,9 @@
 @import 'color';
 
-.menu-text {
-  padding: 0rem 1rem;
-  & a {
-  font-size: 1.2rem;
+.student_menu {
+  li a {
+    color: $brick;
+    font-size: 1.2rem;
     &:hover {
       color: lighten( $brick, 10% );
     }

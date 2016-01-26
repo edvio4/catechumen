@@ -3,13 +3,15 @@ Rails.application.routes.draw do
 
   resources :students, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :curriculums, only: [:index, :create]
+    resources :lessons, only: [:index, :show ]
   end
 
   resources :curriculums, only: [:show, :update, :destroy] do
-    resources :lessons, only: [:index, :show]
     resources :schedules, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  root 'students#index'
+  resources :curriculums, only: [:index]
+
+  root 'homes#index'
 
 end

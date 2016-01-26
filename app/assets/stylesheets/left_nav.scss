@@ -12,30 +12,30 @@
     padding-top: .8rem;
     font-weight: bold;
   }
-}
 
-.left_nav a, .left_nav .heading {
-  font-size: 1.1rem;
-}
-
-hr {
-  height: 1px;
-  color: $rock;
-  background-color: $rock;
-  border: none;
-  margin: 0px;
-}
-
-.add_student {
-  padding-bottom: .8rem;
-  a {
-  font-size: .85rem;
+  a, .heading {
+    font-size: 1.1rem;
   }
-}
 
-.delete_student {
-  padding-bottom: .8rem;
-  a {
+  hr {
+    height: 1px;
+    color: $rock;
+    background-color: $rock;
+    border: none;
+    margin: 0px;
+  }
+
+  .add_student {
+    padding-bottom: .8rem;
+    a {
     font-size: .85rem;
+    }
+  }
+
+  .delete_student {
+    padding-bottom: .8rem;
+    a {
+      font-size: .85rem;
+    }
   }
 }

@@ -1,0 +1,126 @@
+@import 'color';
+
+.calendar {
+
+  .view_links, h4 {
+    display: inline
+  }
+
+  .view_links {
+    margin-left: 1.5rem;
+    a {
+      margin-right: 1rem;
+    }
+  }
+
+  a {
+    color: $brick;
+    &:hover {
+      color: lighten( $brick, 10% );
+    }
+  }
+
+  .month {
+    .day {
+      height: 100px;
+    }
+    table {
+      max-width: 100%;
+      width: 80%;
+    }
+  }
+
+  .week {
+    .day {
+      height: 150px;
+    }
+    table {
+      max-width: 100%;
+      width: 100%;
+
+    }
+
+  }
+
+
+
+  .simple-calendar {
+    table {
+      -webkit-border-horizontal-spacing: 0px;
+      -webkit-border-vertical-spacing: 0px;
+      background-color: rgba(0, 0, 0, 0);
+      border: 1px solid rgb(221, 221, 221);
+      border-collapse: collapse;
+      box-sizing: border-box;
+    }
+
+    tr {
+      border-collapse: collapse;
+    }
+
+    th {
+      padding: 6px;
+      border-bottom: 2px solid $rock;
+      border-collapse: collapse;
+      border-left: 1px solid $rock;
+      border-right: 1px solid $rock;
+      border-top: 1px solid $rock;
+      box-sizing: border-box;
+      text-align: left;
+    }
+
+    td {
+      padding: 6px;
+      vertical-align: top;
+      width: 14%;
+
+      border: 1px solid #ddd;
+      border-top-color: $rock;
+      border-top-style: solid;
+      border-top-width: 1px;
+      border-right-color: $rock;
+      border-right-style: solid;
+      border-right-width: 1px;
+      border-bottom-color: $rock;
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+      border-left-color: $rock;
+      border-left-style: solid;
+      border-left-width: 1px;
+    }
+
+
+
+    .wday-0 {}
+    .wday-1 {}
+    .wday-2 {}
+    .wday-3 {}
+    .wday-4 {}
+    .wday-5 {}
+    .wday-6 {}
+
+    .today {
+      background: #FFFFC0
+    }
+
+    .past {}
+    .future {}
+
+    .start-date {}
+
+    .prev-month {
+      background: #DDD;
+    }
+    .next-month {
+      background: #DDD;
+    }
+    .current-month {}
+
+    .has-events {}
+
+    .unit li {
+      font-size: .8rem;
+      list-style: none;
+    }
+  }
+}

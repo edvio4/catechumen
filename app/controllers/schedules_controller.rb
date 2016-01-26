@@ -16,7 +16,7 @@ class SchedulesController < ApplicationController
     @schedule = Schedule.new(start_date: schedule_params[:start_date], pace_id: schedule_params[:pace_id], curriculum: @curriculum)
     if @schedule.save
       @curriculum.update_attributes(schedule: @schedule)
-      CreateNewRecurrence.new(recurrence_params[:day_id], @schedule)
+      CreateNewRecurrence.new(recurrence_params[:occurrence_id], @schedule)
       MakeScheduleForCurriculum.new(@curriculum)
       flash[:notice] = "Schedule added successfully"
       redirect_to curriculum_path(@curriculum)
@@ -33,6 +33,6 @@ class SchedulesController < ApplicationController
   end
 
   def recurrence_params
-    params.require(:recurrence).permit(day_id: [])
+    params.require(:recurrence).permit(occurrence_id: [])
   end
 end
