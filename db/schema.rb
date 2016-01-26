@@ -67,13 +67,13 @@ ActiveRecord::Schema.define(version: 20160122184730) do
   add_index "paces", ["pace"], name: "index_paces_on_pace", unique: true, using: :btree
 
   create_table "recurrences", force: :cascade do |t|
-    t.integer  "schedule_id", null: false
-    t.integer  "day_id",      null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "schedule_id",   null: false
+    t.integer  "occurrence_id", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  add_index "recurrences", ["schedule_id", "day_id"], name: "index_recurrences_on_schedule_id_and_day_id", unique: true, using: :btree
+  add_index "recurrences", ["schedule_id", "occurrence_id"], name: "index_recurrences_on_schedule_id_and_occurrence_id", unique: true, using: :btree
 
   create_table "resources", force: :cascade do |t|
     t.string   "title",                         null: false

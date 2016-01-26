@@ -1,0 +1,39 @@
+%div{ class: "row main_container" }
+  = render 'layouts/left_nav'
+  = render 'students/student_menu'
+  .calendar
+    %h4= "#{@student.name}'s Calendar"
+    .view_links
+      = link_to 'Month', start_date: params[:start_date], view: 'month'
+      = link_to 'Week', start_date: params[:start_date], view: 'week'
+    %div{ class: 'small-10 columns calendar_container' }
+      - if params[:view] == 'month'
+        .month
+          = month_calendar events: @lessons do |date, lessons|
+            = date
+
+            - lessons.sort_by! { |x| [x.lesson_database_object.curriculum.resource.title, x.lesson_database_object.unit, x.lesson_database_object.division_unit] }
+            - lessons.each do |lesson|
+              - lesson = lesson.lesson_database_object
+              .unit
+                - a = "#{lesson.curriculum.resource.title.split(/\W/).map(&:first).join} "
+                - if lesson.curriculum.resource.division_type_id.nil?
+                  - b = "#{lesson.curriculum.resource.unit_type.name[0]}#{lesson.unit}"
+                - else
+                  - b = "#{lesson.curriculum.resource.unit_type.name[0]}#{lesson.unit}#{lesson.division_unit}"
+                %li= a+b
+      - else
+        .week
+          = week_calendar events: @lessons do |date, lessons|
+            = date
+
+            - lessons.sort_by! { |x| [x.lesson_database_object.curriculum.resource.title, x.lesson_database_object.unit, x.lesson_database_object.division_unit] }
+            - lessons.each do |lesson|
+              - lesson = lesson.lesson_database_object
+              .unit
+                - a = "#{lesson.curriculum.resource.title.split(/\W/).map(&:first).join} "
+                - if lesson.curriculum.resource.division_type_id.nil?
+                  - b = "#{lesson.curriculum.resource.unit_type.name[0]}#{lesson.unit}"
+                - else
+                  - b = "#{lesson.curriculum.resource.unit_type.name[0]}#{lesson.unit}#{lesson.division_unit}"
+                %li= a+b

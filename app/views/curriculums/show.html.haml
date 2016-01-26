@@ -18,14 +18,18 @@
         = "There is no schedule for this curriculum."
         = link_to "Set Schedule", new_curriculum_schedule_path(@curriculum)
     - else
-      - i=0
-      - count = @lessons.length/4 + 1
-      - while i < @lessons.length
-        %div{ class: 'small-3 columns'}
-          - count.times do
-            - if @lessons[i].curriculum.resource.division_type_id.nil?
-              %li= "#{@lessons[i].curriculum.resource.unit_type.name.singularize} #{@lessons[i].unit}, Schedule Date: #{@lessons[i].scheduled_date}"
-            - else
-              %li= "#{@lessons[i].curriculum.resource.unit_type.name.singularize} #{@lessons[i].unit}, #{@lessons[i].curriculum.resource.division_type.name.singularize} #{@lessons[i].division_unit}, Schedule Date: #{@lessons[i].scheduled_date}"
-            - i+=1
-            - break if i == @lessons.length
+      %li= "Pace: #{@curriculum.schedule.pace.pace} #{@curriculum.resource.unit_type.name.downcase.singularize} per day"
+      - recurrences = []
+      - @curriculum.recurrences.map { |recurrence| recurrences << recurrence.occurrence.day }
+      %li= "Recurrence: #{recurrences.join(", ")}"
+      -# - i=0
+      -# - count = @lessons.length/4 + 1
+      -# - while i < @lessons.length
+      -#   %div{ class: 'small-3 columns'}
+      -#     - count.times do
+      -#       - if @lessons[i].curriculum.resource.division_type_id.nil?
+      -#         %li= "#{@lessons[i].curriculum.resource.unit_type.name.singularize} #{@lessons[i].unit}, Schedule Date: #{@lessons[i].scheduled_date}"
+      -#       - else
+      -#         %li= "#{@lessons[i].curriculum.resource.unit_type.name.singularize} #{@lessons[i].unit}, #{@lessons[i].curriculum.resource.division_type.name.singularize} #{@lessons[i].division_unit}, Schedule Date: #{@lessons[i].scheduled_date}"
+      -#       - i+=1
+      -#       - break if i == @lessons.length

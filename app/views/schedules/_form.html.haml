@@ -8,6 +8,6 @@
     = collection_select(:schedule, :pace_id, Pace.all, :id, :pace, { prompt: true })
 
   .recurrence-form-days
-    = collection_check_boxes(:recurrence, :day_id, Occurrence.all, :id, :day)
+    = collection_check_boxes(:recurrence, :occurrence_id, Occurrence.all, :id, :day)
 
   %div= submit_tag 'Set Schedule'

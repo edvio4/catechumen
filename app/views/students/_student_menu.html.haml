@@ -1,4 +1,4 @@
-%ul.menu
+%ul.menu.student_menu
   %li= link_to 'Curriculums', student_curriculums_path(@student)
-  %li= link_to "Calendar", "#"
+  %li= link_to "Calendar", "/students/#{@student.id}/lessons?start_date=#{Date.today.strftime("%F")}&view=month"
   %li= link_to "Today's Agenda", "#"

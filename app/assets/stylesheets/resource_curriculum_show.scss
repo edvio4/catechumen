@@ -1,42 +1,45 @@
 @import 'color';
 
-
-.resources_container a, .curriculums_container a {
-  color: $brick;
-  &:hover {
-    color: lighten( $brick, 10% );
-    text-decoration: underline;
+.resources_container, .curriculums_container {
+  a {
+    color: $brick;
+    &:hover {
+      color: lighten( $brick, 10% );
+      text-decoration: underline;
+    }
   }
-}
 
-li {
-  list-style-type: none;
-  font-size: 1rem;
-}
+  li {
+    list-style-type: none;
+    & a {
+    font-size: 1.1rem;
+    }
+  }
 
-.subject_heading {
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: $rock;
-}
+  .subject_heading {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: $rock;
+  }
 
-h1, h2, h3, h4 {
-  color: $rock;
-  font-weight: bold;
-}
+  h1, h2, h3, h4 {
+    color: $rock;
+    font-weight: bold;
+  }
 
-h1 {
-  font-size: 2.1rem;
-}
+  h1 {
+    font-size: 2.1rem;
+  }
 
-h2 {
-  font-size: 1.8rem;
-}
+  h2 {
+    font-size: 1.8rem;
+  }
 
-h3 {
-  font-size: 1.6rem;
-}
+  h3 {
+    font-size: 1.6rem;
+  }
 
-h4 {
-  font-size: 1.3rem;
+  h4 {
+    font-size: 1.3rem;
+  }
 }

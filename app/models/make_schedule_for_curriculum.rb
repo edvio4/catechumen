@@ -14,7 +14,7 @@ class MakeScheduleForCurriculum
     recurrence_array = []
     recurrence_objects = @curriculum.schedule.recurrences
     recurrence_objects.each do |recurrence_object|
-      recurrence_array << recurrence_object.day_id
+      recurrence_array << recurrence_object.occurrence_id
     end
     recurrence_array
   end
@@ -81,7 +81,7 @@ class MakeScheduleForCurriculum
   end
 
   def scheduled_date_match_recurrence?
-    @recurrence.any? { |day_id| day_id.to_i == @scheduled_date.cwday }
+    @recurrence.any? { |occurrence_id| occurrence_id.to_i == @scheduled_date.cwday }
   end
 
   def pace_fraction?
