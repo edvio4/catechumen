@@ -1,6 +1,7 @@
 class CreateCurriculums < ActiveRecord::Migration
   def change
     create_table :curriculums do |t|
+      t.integer :user_id, null: false
       t.integer :resource_id, null: false
       t.integer :student_id, null: false
       t.integer :schedule_id

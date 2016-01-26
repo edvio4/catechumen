@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :models
   resources :resources, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   resources :students, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
