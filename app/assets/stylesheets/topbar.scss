@@ -1,11 +1,46 @@
 @import 'color';
 
-.menu-text {
-  padding: 0rem 1rem;
-  & a {
-  font-size: 1.2rem;
-    &:hover {
-      color: lighten( $brick, 10% );
+
+.top-bar {
+
+  padding: 0px;
+
+  .top-bar-left {
+    margin-top: 6px;
+  }
+
+
+  .menu-text {
+    margin-top: 1px;
+    a {
+      font-size: 1.2rem;
+      &:hover {
+        color: lighten( $brick, 10% );
+      }
     }
+  }
+
+  .menu.vertical {
+    background-color: $rock;
+  }
+
+  ul.right {
+    margin: 0;
+    height: 30px;
+  }
+
+  ul.dropdown.menu li {
+    margin-bottom: 3px;
+    height: 25px;
+  }
+
+  li {
+    & a {
+    padding: 0;
+    }
+  }
+
+  a {
+    padding: 0;
   }
 }

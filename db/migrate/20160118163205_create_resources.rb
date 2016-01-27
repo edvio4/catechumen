@@ -1,6 +1,7 @@
 class CreateResources < ActiveRecord::Migration
   def change
     create_table :resources do |t|
+      t.integer :user_id, null: false
       t.string :title, null: false
       t.string :units, null: false
       t.integer :unit_type_id, null: false
@@ -11,6 +12,6 @@ class CreateResources < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :resources, :title, unique: true
+    add_index :resources, [:title, :user_id], unique: true
   end
 end

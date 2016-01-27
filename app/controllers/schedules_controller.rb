@@ -2,21 +2,23 @@ require_relative '../models/create_new_recurrence'
 require_relative '../models/make_schedule_for_curriculum'
 
 class SchedulesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :curriculum, only: [:new, :create]
+  before_action :authorized_user?, only: [:new, :create]
+
   def new
-    @students = Student.all
-    @curriculum = Curriculum.find(params[:curriculum_id])
+    @students = current_user.students
     @student  = @curriculum.student
     @schedule = Schedule.new
   end
 
   def create
-    @students = Student.all
-    @curriculum = Curriculum.find(params[:curriculum_id])
+    @students = current_user.students
     @student  = @curriculum.student
-    @schedule = Schedule.new(start_date: schedule_params[:start_date], pace_id: schedule_params[:pace_id], curriculum: @curriculum)
-    if @schedule.save
+    @schedule = Schedule.new(schedule_params)
+    if @schedule.update_attributes(curriculum: @curriculum, user: current_user)
       @curriculum.update_attributes(schedule: @schedule)
-      CreateNewRecurrence.new(recurrence_params[:occurrence_id], @schedule)
+      CreateNewRecurrence.new(recurrence_params[:occurrence_id], @schedule, current_user)
       MakeScheduleForCurriculum.new(@curriculum)
       flash[:notice] = "Schedule added successfully"
       redirect_to curriculum_path(@curriculum)
@@ -34,5 +36,9 @@ class SchedulesController < ApplicationController
 
   def recurrence_params
     params.require(:recurrence).permit(occurrence_id: [])
+  end
+
+  def curriculum
+    @curriculum ||= Curriculum.find(params[:curriculum_id])
   end
 end

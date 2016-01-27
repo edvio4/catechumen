@@ -1,0 +1,7 @@
+= form_for(@division_type) do |f|
+  %div
+    = f.label :name
+    = f.text_field :name
+
+  .actions
+    = f.submit "Add Division Type"

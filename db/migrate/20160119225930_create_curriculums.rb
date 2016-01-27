@@ -1,6 +1,7 @@
 class CreateCurriculums < ActiveRecord::Migration
   def change
     create_table :curriculums do |t|
+      t.integer :user_id, null: false
       t.integer :resource_id, null: false
       t.integer :student_id, null: false
       t.integer :schedule_id
@@ -10,6 +11,6 @@ class CreateCurriculums < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index(:curriculums, [:resource_id, :student_id], unique: true)
+    add_index :curriculums, [:resource_id, :student_id, :user_id], unique: true
   end
 end

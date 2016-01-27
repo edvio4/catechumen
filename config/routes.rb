@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :resources, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
   resources :students, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
@@ -11,7 +12,11 @@ Rails.application.routes.draw do
   end
 
   resources :curriculums, only: [:index]
+  resources :subjects, only: [:index, :new, :create]
+  resources :unit_types, only: [:new, :create]
+  resources :division_types, only: [:new, :create]
 
-  root 'homes#index'
+
+  root 'home#index'
 
 end

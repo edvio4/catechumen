@@ -1,0 +1,7 @@
+= form_for(@unit_type) do |f|
+  %div
+    = f.label :name
+    = f.text_field :name
+
+  .actions
+    = f.submit "Add Unit Type"

@@ -4,8 +4,10 @@ class Resource < ActiveRecord::Base
   belongs_to :subject
   has_many :curriculums
   has_many :students, through: :curriculums
+  belongs_to :user
 
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true, uniqueness: { scope: :user_id }
+  validates :user_id, presence: true
   validates :units, presence: true, format: { with: /[a-zA-Z]|\d+/, message: "only allows numbers or a single letter" }
   validates :unit_type_id, presence: true
   validates :subject, presence: true

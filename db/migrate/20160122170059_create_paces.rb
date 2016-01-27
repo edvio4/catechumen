@@ -5,6 +5,6 @@ class CreatePaces < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index(:paces, :pace, unique: true)
+    add_index :paces, :pace, unique: true
   end
 end

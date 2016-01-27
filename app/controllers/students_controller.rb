@@ -1,6 +1,10 @@
 class StudentsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :student, only: [:show, :edit, :update, :destroy]
+  before_action :students, only: [:index, :new, :show]
+  before_action :authorized_user?, only: [:show, :edit, :update, :destroy]
+
   def index
-    @students = Student.all
   end
 
   def new
@@ -8,17 +12,12 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @students = Student.all
-    @student = Student.find(params[:id])
   end
 
   def edit
-    @student = Student.find(params[:id])
   end
 
   def update
-    @student = Student.find(params[:id])
-
     if @student.update_attributes(student_params)
       flash[:notice] = "Student edited successfully"
       redirect_to student_path(@student)
@@ -30,7 +29,7 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
-    if @student.save
+    if @student.update_attributes(user: current_user)
       flash[:notice] = "Student added successfully"
       redirect_to students_path
     else
@@ -40,7 +39,7 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    Student.find(params[:id]).destroy
+    @student.destroy
     flash[:success] = "Student Deleted"
     redirect_to root_path
   end
@@ -49,5 +48,13 @@ class StudentsController < ApplicationController
 
   def student_params
     params.require(:student).permit(:name)
+  end
+
+  def student
+    @student ||= Student.find(params[:id])
+  end
+
+  def students
+    @students ||= current_user.students
   end
 end
