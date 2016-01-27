@@ -8,6 +8,6 @@ class CreateSchedules < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index(:schedules, :curriculum_id, unique: true)
+    add_index :schedules, [:curriculum_id, :user_id], unique: true
   end
 end

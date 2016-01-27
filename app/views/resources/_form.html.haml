@@ -5,8 +5,11 @@
 
   %div{ class: "resource-form-subject" }
     = f.label :subject
-    = f.collection_select(:subject_id, Subject.order(:name), :id, :name, { prompt: true })
+    = f.collection_select(:subject_id, Subject.where(user: current_user).order(:name), :id, :name, { prompt: true })
+    = "If the Subject you want to add is not listed, then"
+    = link_to 'Add New Subject', new_subject_path
 
+  %p
   %div{ class: "resource-form-unit inline" }
     .input_instructions= "Enter the total units (letter or number) and select the unit type"
     = f.label :units, class: "hidden"
@@ -14,7 +17,7 @@
 
   %div{ class: "resorce-form-unit-type inline" }
     = f.label :unit_type, class: "hidden"
-    = f.collection_select(:unit_type_id, UnitType.order(:name), :id, :name, { prompt: true }, { class: "inline" } )
+    = f.collection_select(:unit_type_id, UnitType.where(user: current_user).order(:name), :id, :name, { prompt: true }, { class: "inline" } )
 
   %div{ class: "resource-form-division-unit inline" }
     .input_instructions= "If each unit is broken down into smaller sections, enter that here."
@@ -24,7 +27,7 @@
 
   %div{ class: "resorce-form-division-unit-type inline" }
     = f.label :division_type, class: "hidden"
-    = f.collection_select(:division_type_id, DivisionType.order(:name), :id, :name, { prompt: true, include_blank: 'None' }, { class: "inline" } )
+    = f.collection_select(:division_type_id, DivisionType.where(user: current_user).order(:name), :id, :name, { prompt: true, include_blank: 'None' }, { class: "inline" } )
 
   .form-actions
     = f.submit "Add Resource"

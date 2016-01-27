@@ -8,6 +8,6 @@ class CreateRecurrences < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index(:recurrences, [:schedule_id, :occurrence_id], unique: true)
+    add_index :recurrences, [:schedule_id, :occurrence_id, :user_id], unique: true
   end
 end

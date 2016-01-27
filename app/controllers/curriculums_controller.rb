@@ -1,30 +1,29 @@
 require_relative '../models/create_curriculum_form_options'
 
 class CurriculumsController < ApplicationController
-  def index
-    @student = Student.find(params[:student_id])
-    @students = Student.all
-    @curriculum = Curriculum.new
-    @resources = Resource.joins(:curriculums).where.not(curriculums: { student: @student } ).order(:title)
+  before_action :authenticate_user!
+  before_action :student, only: [:index, :create]
+  before_action :curriculum, only: [:show, :edit, :update, :destroy]
+  before_action :students, only: [:index, :show, :edit, :update, :destroy]
+  before_action :authorized_user?, only: [:index, :show, :edit, :update, :destroy]
 
+  def index
+    @curriculum = Curriculum.new
+    @resources = current_user.resources.joins(:curriculums).where.not(curriculums: { student: @student } ).order(:title)
     @grouped_options = CreateCurriculumFormOptions.new(@student).create_grouped_options
     @curriculums_by_subject = @student.subjects.order(:name).uniq
   end
 
 
   def show
-    @students = Student.all
-    @curriculum = Curriculum.find(params[:id])
     @student  = @curriculum.student
     @lessons = order_lessons(@curriculum)
   end
 
   def edit
-    @curriculum = Curriculum.find(params[:id])
   end
 
   def update
-    @curriculum = Curriculum.find(params[:id])
     if @curriculum.update_attributes(curriculum_params)
       flash[:notice] = "Curriculum edited successfully"
       redirect_to curriculum_path(@curriculum)
@@ -35,20 +34,19 @@ class CurriculumsController < ApplicationController
   end
 
   def create
-    @student = Student.find(params[:student_id])
-    @curriculum = Curriculum.new(resource_id: curriculum_params[:resource_id], student: @student)
-    if @curriculum.save
-      CreateCurriculumLessons.new(@curriculum)
+    @curriculum = Curriculum.new(curriculum_params[:resource_id])
+    if @curriculum.update_attributes(student: @student, user: current_user)
+      CreateCurriculumLessons.new(@curriculum, current_user)
       flash[:notice] = "Curriculum added successfully"
       redirect_to student_curriculums_path(@student)
     else
       flash[:errors] = @curriculum.errors.full_messages.join(". ")
-      redirect_to student_curriculums_path(@student)
+      render :index
     end
   end
 
   def destroy
-    Curriculum.find(params[:id]).destroy
+    @curriculum.destroy
     flash[:success] = "Curriculum Deleted"
     redirect_to root_path
   end
@@ -57,6 +55,18 @@ class CurriculumsController < ApplicationController
 
   def curriculum_params
     params.require(:curriculum).permit(:resource_id)
+  end
+
+  def student
+    @student ||= Student.find(params[:student_id])
+  end
+
+  def students
+    @students ||= current_user.students
+  end
+
+  def curriculum
+    @curriculum ||= Curriculum.find(params[:id])
   end
 
   def order_lessons(curriculum)

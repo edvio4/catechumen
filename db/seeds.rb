@@ -1,15 +1,15 @@
-['Lessons', 'Pages', 'Sections', 'Units', 'Modules'].each do |name|
-  UnitType.create( name: name )
-end
-
-['Lessons', 'Sections', 'Units', 'Parts', 'Modules'].each do |name|
-  DivisionType.create( name: name )
-end
-
-['Math', 'Grammar', 'Reading', 'Spelling', 'Handwriting'].each do |name|
-  Subject.create( name: name )
-end
-
+# ['Lessons', 'Pages', 'Sections', 'Units', 'Modules'].each do |name|
+#   UnitType.create( name: name )
+# end
+#
+# ['Lessons', 'Sections', 'Units', 'Parts', 'Modules'].each do |name|
+#   DivisionType.create( name: name )
+# end
+#
+# ['Math', 'Grammar', 'Reading', 'Spelling', 'Handwriting'].each do |name|
+#   Subject.create( name: name )
+# end
+#
 ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].each do |day|
   Occurrence.create( day: day )
 end

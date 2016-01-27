@@ -12,6 +12,6 @@ class CreateResources < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :resources, :title, unique: true
+    add_index :resources, [:title, :user_id], unique: true
   end
 end

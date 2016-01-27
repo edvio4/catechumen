@@ -12,6 +12,6 @@ class CreateLessons < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index(:lessons, [:unit, :curriculum_id, :division_unit], unique: true)
+    add_index :lessons, [:unit, :curriculum_id, :division_unit, :user_id], unique: true, name: 'lessons_index'
   end
 end

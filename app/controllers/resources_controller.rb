@@ -1,25 +1,27 @@
 class ResourcesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :resource, only: [:show, :edit, :update, :destroy]
+  before_action :authorized_user?, only: [:show, :edit, :update, :destroy]
+
   def index
-    @students = Student.all
-    @resources_by_subject = Subject.joins(:resources).group('subjects.id').order(:name)
+    @students = current_user.students
+    @resources_by_subject = Subject.where(user: current_user).joins(:resources).group('subjects.id').order(:name)
   end
 
   def new
-    @students = Student.all
+    @students = current_user.students
     @resource = Resource.new
+    @subject = Subject.new
   end
 
   def show
-    @students = Student.all
-    @resource = Resource.find(params[:id])
+    @students = current_user.students
   end
 
   def edit
-    @resource = Resource.find(params[:id])
   end
 
   def update
-    @resource = Resource.find(params[:id])
     if @resource.update_attributes(resource_params)
       flash[:notice] = "Resource edited successfully"
       redirect_to resource_path(@resource)
@@ -30,9 +32,9 @@ class ResourcesController < ApplicationController
   end
 
   def create
-    @students = Student.all
+    @students = current_user.students
     @resource = Resource.new(resource_params)
-    if @resource.save
+    if @resource.update_attributes(user: current_user)
       flash[:notice] = "Resource added successfully"
       redirect_to resources_path
     else
@@ -42,14 +44,18 @@ class ResourcesController < ApplicationController
   end
 
   def destroy
-    Resource.find(params[:id]).destroy
+    @resource.destroy
     flash[:success] = "Resource Deleted"
-    redirect_to root_path
+    redirect_to students_path
   end
 
   private
 
   def resource_params
     params.require(:resource).permit(:title, :units, :division_units, :unit_type_id, :division_type_id, :subject_id)
+  end
+
+  def resource
+    @resource ||= Resource.find(params[:id])
   end
 end

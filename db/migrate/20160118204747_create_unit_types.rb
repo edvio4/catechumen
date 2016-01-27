@@ -7,6 +7,6 @@ class CreateUnitTypes < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :unit_types, :name, unique: true
+    add_index :unit_types, [:name, :user_id], unique: true
   end
 end

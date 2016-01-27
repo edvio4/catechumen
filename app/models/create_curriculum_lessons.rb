@@ -1,7 +1,8 @@
 class CreateCurriculumLessons
 
-  def initialize(curriculum)
+  def initialize(curriculum, current_user)
     @curriculum = curriculum
+    @current_user = current_user
     create_curriculum_lessons
   end
 
@@ -27,11 +28,11 @@ class CreateCurriculumLessons
     division_flag = is_number?(division_units) ? "number" : ( /[[:upper:]]/.match(division_units) ? "upper" : "lower" )
     number_of_units.times do |i|
       unit = unit_flag == "number" ? i+1 : ( unit_flag == "upper" ? alphabet[i].upcase : alphabet[i])
-      Lesson.create(curriculum: @curriculum, unit: unit) if division_units.empty?
+      Lesson.create(curriculum: @curriculum, unit: unit, user: @current_user) if division_units.empty?
       unless division_units.empty?
         number_of_divisions.times do |j|
           division_unit = division_flag == "number" ? j+1 : ( division_flag == "upper" ? alphabet[j].upcase : alphabet[j] )
-          Lesson.create(curriculum: @curriculum, unit: unit, division_unit: division_unit)
+          Lesson.create(curriculum: @curriculum, unit: unit, division_unit: division_unit, user: @current_user)
         end
       end
     end
