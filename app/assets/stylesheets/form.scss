@@ -27,5 +27,7 @@ form {
 }
 
 .input_instructions {
-  font-size: .875rem;
+  &, a {
+    font-size: .875rem;
+  }
 }
