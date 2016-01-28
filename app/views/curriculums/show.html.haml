@@ -2,7 +2,7 @@
   = render 'layouts/left_nav'
   = render 'students/student_menu'
 
-  #curriculm_show_conatiner{ class: 'small-10 columns' }
+  .curriculum_show_container.small-10.columns
     %h3= "#{@student.name}'s Schedule for '#{@curriculum.resource.title}'"
 
     %hr
@@ -22,14 +22,3 @@
       - recurrences = []
       - @curriculum.recurrences.map { |recurrence| recurrences << recurrence.occurrence.day }
       %li= "Recurrence: #{recurrences.join(", ")}"
-      -# - i=0
-      -# - count = @lessons.length/4 + 1
-      -# - while i < @lessons.length
-      -#   %div{ class: 'small-3 columns'}
-      -#     - count.times do
-      -#       - if @lessons[i].curriculum.resource.division_type_id.nil?
-      -#         %li= "#{@lessons[i].curriculum.resource.unit_type.name.singularize} #{@lessons[i].unit}, Schedule Date: #{@lessons[i].scheduled_date}"
-      -#       - else
-      -#         %li= "#{@lessons[i].curriculum.resource.unit_type.name.singularize} #{@lessons[i].unit}, #{@lessons[i].curriculum.resource.division_type.name.singularize} #{@lessons[i].division_unit}, Schedule Date: #{@lessons[i].scheduled_date}"
-      -#       - i+=1
-      -#       - break if i == @lessons.length

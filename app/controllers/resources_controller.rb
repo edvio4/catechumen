@@ -23,10 +23,10 @@ class ResourcesController < ApplicationController
 
   def update
     if @resource.update_attributes(resource_params)
-      flash[:notice] = "Resource edited successfully"
+      flash.now[:notice] = "Resource edited successfully"
       redirect_to resource_path(@resource)
     else
-      flash[:errors] = @resource.errors.full_messages.join(". ")
+      flash.now[:errors] = @resource.errors.full_messages.join(". ")
       render :edit
     end
   end
@@ -35,17 +35,17 @@ class ResourcesController < ApplicationController
     @students = current_user.students
     @resource = Resource.new(resource_params)
     if @resource.update_attributes(user: current_user)
-      flash[:notice] = "Resource added successfully"
+      flash.now[:notice] = "Resource added successfully"
       redirect_to resources_path
     else
-      flash[:errors] = @resource.errors.full_messages.join(". ")
+      flash.now[:errors] = @resource.errors.full_messages.join(". ")
       render :new
     end
   end
 
   def destroy
     @resource.destroy
-    flash[:success] = "Resource Deleted"
+    flash.now[:success] = "Resource Deleted"
     redirect_to students_path
   end
 

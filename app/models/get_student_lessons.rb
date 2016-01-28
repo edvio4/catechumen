@@ -14,10 +14,12 @@ class GetStudentLessons
 
   def get_lessons
     @curriculums.each do |curriculum|
-      if pace_fraction?(curriculum.schedule.pace.pace)
-        lessons_with_fraction(curriculum)
-      else
-        lessons_no_fraction(curriculum)
+      unless curriculum.schedule.nil?
+        if pace_fraction?(curriculum.schedule.pace.pace)
+          lessons_with_fraction(curriculum)
+        else
+          lessons_no_fraction(curriculum)
+        end
       end
     end
   end

@@ -1,0 +1,12 @@
+%button.button{"data-toggle" => "subject-form-dropdown", :type => "button"} Add Subject
+= form_for(@subject, remote: true) do |f|
+  #subject-form-dropdown.dropdown-pane{"data-auto-focus" => "true", "data-dropdown" => ""}
+    %form.subject_form
+      .row
+        .small-12.columns
+          = f.label :name
+          = f.text_field :name
+      .row
+        .medium-6.columns
+          .actions
+            = f.submit "Add Subject"

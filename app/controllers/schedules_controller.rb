@@ -20,10 +20,10 @@ class SchedulesController < ApplicationController
       @curriculum.update_attributes(schedule: @schedule)
       CreateNewRecurrence.new(recurrence_params[:occurrence_id], @schedule, current_user)
       MakeScheduleForCurriculum.new(@curriculum)
-      flash[:notice] = "Schedule added successfully"
+      flash.now[:notice] = "Schedule added successfully"
       redirect_to curriculum_path(@curriculum)
     else
-      flash[:errors] = @schedule.errors.full_messages.join(". ")
+      flash.now[:errors] = @schedule.errors.full_messages.join(". ")
       render :new
     end
   end

@@ -1,8 +1,8 @@
 %div{ class: "row main_container" }
   = render 'layouts/left_nav'
   = render 'student_menu'
-  %div{ class: 'small-10 columns show_container' }
-    %h3= "#{@student.name}'s Page"
+  %div{ class: 'small-10 columns student_show_container' }
+    %h2= "#{@student.name}'s Page"
 
     -# %div= render 'reviews/form'
     -#

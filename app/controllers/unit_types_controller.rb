@@ -10,10 +10,10 @@ class UnitTypesController < ApplicationController
     @students = current_user.students
     @unit_type = UnitType.new(unit_type_params)
     if @unit_type.update_attributes(user: current_user)
-      flash[:notice] = "Unit Type added successfully"
+      flash.now[:notice] = "Unit Type added successfully"
       redirect_to new_resource_path
     else
-      flash[:errors] = @unit_type.errors.full_messages.join(". ")
+      flash.now[:errors] = @unit_type.errors.full_messages.join(". ")
       render :new
     end
   end

@@ -1,6 +1,7 @@
 @import 'color';
 
-.resources_container, .curriculums_container {
+.resources_container, .curriculums_container, .new_schedule_container, .curriculum_show_container, .student_show_container, .subjects_index_container {
+
   a {
     color: $brick;
     &:hover {
@@ -42,4 +43,8 @@
   h4 {
     font-size: 1.3rem;
   }
+}
+
+.resources_container, .subjects_index_container {
+  margin-top: 40px;
 }

@@ -5,6 +5,12 @@
 
   padding: 0px;
 
+  a {
+    &:hover {
+      color: lighten( $brick, 10% );
+    }
+  }
+
   .top-bar-left {
     margin-top: 6px;
   }
@@ -14,9 +20,6 @@
     margin-top: 1px;
     a {
       font-size: 1.2rem;
-      &:hover {
-        color: lighten( $brick, 10% );
-      }
     }
   }
 

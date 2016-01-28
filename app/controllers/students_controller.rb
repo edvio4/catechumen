@@ -1,7 +1,7 @@
 class StudentsController < ApplicationController
   before_action :authenticate_user!
   before_action :student, only: [:show, :edit, :update, :destroy]
-  before_action :students, only: [:index, :new, :show]
+  before_action :students, only: [:index, :new, :create, :show]
   before_action :authorized_user?, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,10 +19,10 @@ class StudentsController < ApplicationController
 
   def update
     if @student.update_attributes(student_params)
-      flash[:notice] = "Student edited successfully"
+      flash.now[:notice] = "Student edited successfully"
       redirect_to student_path(@student)
     else
-      flash[:errors] = @student.errors.full_messages.join(". ")
+      flash.now[:errors] = @student.errors.full_messages.join(". ")
       render :edit
     end
   end
@@ -30,17 +30,17 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.update_attributes(user: current_user)
-      flash[:notice] = "Student added successfully"
+      flash.now[:notice] = "Student added successfully"
       redirect_to students_path
     else
       flash[:errors] = @student.errors.full_messages.join(". ")
-      render :new
+      redirect_to students_path
     end
   end
 
   def destroy
     @student.destroy
-    flash[:success] = "Student Deleted"
+    flash.now[:success] = "Student Deleted"
     redirect_to root_path
   end
 

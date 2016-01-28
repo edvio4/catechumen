@@ -1,6 +1,13 @@
 @import 'color';
 
 .student_menu {
+  width: 500px;
+  height: 40px;
+  // border-style: solid;
+  // border-color: $rock;
+  // border-width: 1px;
+  margin-left: 150px;
+  margin-bottom: 0px;
   li a {
     color: $brick;
     font-size: 1.2rem;

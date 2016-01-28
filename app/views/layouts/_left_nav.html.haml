@@ -1,10 +1,11 @@
-%div{ class: 'small-2 columns' }
+%div{ class: 'small-2 columns left_nav_wrapper' }
   .row
-    %div{ class: 'small-12 medium-10 large-9 columns left_nav' }
+    %div{ class: 'small-12 medium-10 large-9 columns left_nav_inner' }
       %ul{ class: 'vertical menu'}
         %li.heading Students
-        .student_list= render @students
-        %div{ class: "add_student link" }= link_to "Add Student", new_student_path
+        .student_list
+          - @students.each do |student|
+            %li{ class: "student_name link" }= link_to student.name, student_path(student)
         %hr.line
         %li.heading Planning
         %div{ class: "resources link" }= link_to "Resources", resources_path
