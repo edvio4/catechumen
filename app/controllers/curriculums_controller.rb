@@ -25,29 +25,29 @@ class CurriculumsController < ApplicationController
 
   def update
     if @curriculum.update_attributes(curriculum_params)
-      flash[:notice] = "Curriculum edited successfully"
+      flash.now[:notice] = "Curriculum edited successfully"
       redirect_to curriculum_path(@curriculum)
     else
-      flash[:errors] = @curriculum.errors.full_messages.join(". ")
+      flash.now[:errors] = @curriculum.errors.full_messages.join(". ")
       render :edit
     end
   end
 
   def create
-    @curriculum = Curriculum.new(curriculum_params[:resource_id])
+    @curriculum = Curriculum.new(curriculum_params)
     if @curriculum.update_attributes(student: @student, user: current_user)
       CreateCurriculumLessons.new(@curriculum, current_user)
-      flash[:notice] = "Curriculum added successfully"
+      flash.now[:notice] = "Curriculum added successfully"
       redirect_to student_curriculums_path(@student)
     else
-      flash[:errors] = @curriculum.errors.full_messages.join(". ")
-      render :index
+      flash.now[:errors] = @curriculum.errors.full_messages.join(". ")
+      redirect_to student_curriculums_path(@student)
     end
   end
 
   def destroy
     @curriculum.destroy
-    flash[:success] = "Curriculum Deleted"
+    flash.now[:success] = "Curriculum Deleted"
     redirect_to root_path
   end
 

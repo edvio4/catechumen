@@ -10,10 +10,10 @@ class DivisionTypesController < ApplicationController
     @students = current_user.students
     @division_type = DivisionType.new(division_type_params)
     if @division_type.update_attributes(user: current_user)
-      flash[:notice] = "Unit Type added successfully"
+      flash.now[:notice] = "Unit Type added successfully"
       redirect_to new_resource_path
     else
-      flash[:errors] = @division_type.errors.full_messages.join(". ")
+      flash.now[:errors] = @division_type.errors.full_messages.join(". ")
       render :new
     end
   end

@@ -1,0 +1,9 @@
+<% if @subject.errors.any? -%>
+  $(".button").trigger('click');
+  $(".flash").remove();
+  $(".top-bar").after('<div class="flash">' + "<%= @subject.errors.full_messages.join('. ')%>" + '</div>');
+<% else -%>
+  $(".button").trigger('click');
+  $(".flash").remove();
+  $("<%= escape_javascript(render @subject) %>").appendTo(".subject_list");
+<% end %>

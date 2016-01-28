@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def authorized_user?
     if !user_student? || !user_curriculum? || !user_resource? || !user_subject? || !user_lesson? || !user_schedule?
-      flash[:notice] = "The page you are looking for belongs to another user"
+      flash.now[:notice] = "The page you are looking for belongs to another user"
       redirect_to students_path
     end
   end
