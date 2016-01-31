@@ -1,7 +1,6 @@
 .row.main_container
   = render 'layouts/left_nav'
-  .small-10.columns.student_index_container
-    .row.small-up-3.medium-up-4.large-up-5
+  .small-9.columns.student_index_container
+    .row.small-up-2.medium-up-3.large-up-4
       = render @students
-      .column.student_block.add_student
-        .add_student.link= link_to "Add Student", new_student_path, remote: true
+      = render 'add_student_block'

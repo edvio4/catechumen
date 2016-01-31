@@ -1,0 +1,27 @@
+@import 'color';
+
+
+.sign_up, .log_in {
+  margin-top: 30px;
+  color: white;
+
+  label, abbr {
+    color: white;
+    font-size: 1.7rem;
+  }
+
+  .hint {
+    color: white;
+    font-size: 1.2rem;
+
+  }
+
+  .form-actions input {
+    font-size: 1.7rem;
+  }
+
+  a {
+    font-size: 1.7rem;
+  }
+
+}

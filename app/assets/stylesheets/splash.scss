@@ -1,25 +1,77 @@
+@import 'color';
+
 .splash_container {
   // background-image: image-url('chalkboard.jpg');
   // background-size: 100%;
   // background-repeat: no-repeat;
+  color: white;
   background-color: #000000;
   background-image: image-url('chalkboard.jpg');
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
   position: fixed;
-  top: 42px; right: 0; bottom: 0; left: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   z-index: 99999;
-}
 
-.welcome a {
-  color: white;
-  font-size: 5rem;
-  left: 0;
-  line-height: 200px;
-  margin-top: -100px;
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  width: 100%;
+  .menu {
+    padding-top: 20px;
+    a {
+    font-size: 2rem;
+    }
+  }
+
+  center {
+    margin-top: 0px;
+    .welcome {
+      height: 150px;
+    }
+    .welcome a {
+    color: white;
+    font-size: 7rem;
+      &:hover {
+        color: darken(white, 20%);
+      }
+    }
+
+  .tag_line {
+    padding-top: 30px;
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  }
+
+  .definition {
+    font-size: 1.7rem;
+  }
+
+
+  .link_image {
+    padding-top: 20px;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    image {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    a {
+      z-index: 30;
+      position: absolute;
+      color: $rock;
+      font-size: 24px;
+      font-weight: bold;
+      left: 20px;
+      right: 20px;
+      top: 70px;
+      &:hover {
+        color: lighten($brick, 10%);
+      }
+
+    }
+  }
+
+
 }

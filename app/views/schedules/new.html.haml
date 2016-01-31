@@ -2,15 +2,15 @@
   = render 'layouts/left_nav'
   = render 'students/student_menu'
 
-  %div{ class: 'small-10 columns new_schedule_container' }
-    %h3= "Schedule for #{@student.name}'s '#{@curriculum.resource.title}'"
+  %div{ class: 'small-9 columns new_schedule_container' }
+    %h1= "Schedule for #{@student.name}'s '#{@curriculum.resource.title}'"
 
-    %hr
-    %h4 Curriculum Details
-    %li.curriculum_units= "#{@curriculum.resource.units} #{@curriculum.resource.unit_type.name}"
-    - unless @curriculum.resource.division_type.nil?
-      %li.curriculum_divisions= "#{@curriculum.resource.division_units} #{@curriculum.resource.division_type.name}"
+    .curriculum_details_schedule
+      %h2 Curriculum Details
+      %li.curriculum_units= "#{@curriculum.resource.units} #{@curriculum.resource.unit_type.name}"
+      - unless @curriculum.resource.division_type.nil?
+        %li.curriculum_divisions= "#{@curriculum.resource.division_units} #{@curriculum.resource.division_type.name}"
 
-    %hr
-    %h4 Set Curriculum Schedule
-    .form-container= render 'form'
+    .set_schedule
+      %h2 Set Curriculum Schedule
+      .form-container= render 'form'

@@ -2,23 +2,23 @@
   = render 'layouts/left_nav'
   = render 'students/student_menu'
 
-  .curriculum_show_container.small-10.columns
-    %h3= "#{@student.name}'s Schedule for '#{@curriculum.resource.title}'"
+  .curriculum_show_container.small-9.columns
+    %h1= "#{@student.name}'s Schedule for #{@curriculum.resource.title}"
 
-    %hr
-    %h4 Curriculum Details
-    %li.curriculum_units= "#{@curriculum.resource.units} #{@curriculum.resource.unit_type.name}"
-    - unless @curriculum.resource.division_type.nil?
-      %li.curriculum_divisions= "#{@curriculum.resource.division_units} #{@curriculum.resource.division_type.name}"
+    .curriculum_details
+      %h2 Curriculum Details
+      %li.curriculum_units= "#{@curriculum.resource.units} #{@curriculum.resource.unit_type.name}"
+      - unless @curriculum.resource.division_type.nil?
+        %li.curriculum_divisions= "#{@curriculum.resource.division_units} #{@curriculum.resource.division_type.name}"
 
-    %hr
-    %h4 Curriculum Schedule
-    - if @curriculum.schedule.nil?
-      %div
-        = "There is no schedule for this curriculum."
-        = link_to "Set Schedule", new_curriculum_schedule_path(@curriculum)
-    - else
-      %li= "Pace: #{@curriculum.schedule.pace.pace} #{@curriculum.resource.unit_type.name.downcase.singularize} per day"
-      - recurrences = []
-      - @curriculum.recurrences.map { |recurrence| recurrences << recurrence.occurrence.day }
-      %li= "Recurrence: #{recurrences.join(", ")}"
+    .schedule_details
+      %h2 Curriculum Schedule
+      - if @curriculum.schedule.nil?
+        %div
+          = "There is no schedule for this curriculum."
+          = link_to "Set Schedule", new_curriculum_schedule_path(@curriculum)
+      - else
+        %li= "Pace: #{@curriculum.schedule.pace.pace} #{@curriculum.resource.unit_type.name.downcase.singularize} per day"
+        - recurrences = []
+        - @curriculum.recurrences.map { |recurrence| recurrences << recurrence.occurrence.day }
+        %li= "Recurrence: #{recurrences.join(", ")}"

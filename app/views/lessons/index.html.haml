@@ -2,16 +2,15 @@
   = render 'layouts/left_nav'
   = render 'students/student_menu'
   .calendar
-    %h4= "#{@student.name}'s Calendar"
+    %h2= "#{@student.name}'s Calendar"
     .view_links
       = link_to 'Month', start_date: params[:start_date], view: 'month'
       = link_to 'Week', start_date: params[:start_date], view: 'week'
-    %div{ class: 'small-10 columns calendar_container' }
+    %div{ class: 'small-9 columns calendar_container' }
       - if params[:view] == 'month'
         .month
           = month_calendar events: @lessons do |date, lessons|
             = date
-
             - lessons.sort_by! { |x| [x.lesson_database_object.curriculum.resource.title, x.lesson_database_object.unit, x.lesson_database_object.division_unit] }
             - lessons.each do |lesson|
               - lesson = lesson.lesson_database_object

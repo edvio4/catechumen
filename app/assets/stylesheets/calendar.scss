@@ -2,7 +2,22 @@
 
 .calendar {
 
-  .view_links, h4 {
+  margin-top: 50px;
+
+  .calendar_nav {
+    margin-left: 220px;
+  }
+
+  .current_month {
+    color: white;
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    color: white;
+  }
+
+  .view_links, h2 {
     display: inline
   }
 
@@ -14,9 +29,11 @@
   }
 
   a {
-    color: $brick;
+    color: white;
+    text-decoration: underline;
+    font-size: 1.5rem;
     &:hover {
-      color: lighten( $brick, 10% );
+      color: darken( white, 10% );
     }
   }
 
@@ -37,18 +54,14 @@
     table {
       max-width: 100%;
       width: 100%;
-
     }
-
   }
-
-
 
   .simple-calendar {
     table {
       -webkit-border-horizontal-spacing: 0px;
       -webkit-border-vertical-spacing: 0px;
-      background-color: rgba(0, 0, 0, 0);
+      background-color: black;
       border: 1px solid rgb(221, 221, 221);
       border-collapse: collapse;
       box-sizing: border-box;
@@ -74,7 +87,7 @@
       vertical-align: top;
       width: 14%;
 
-      border: 1px solid #ddd;
+      border: 1px solid $rock;
       border-top-color: $rock;
       border-top-style: solid;
       border-top-width: 1px;

@@ -1,7 +1,6 @@
 .row.main_container
   = render 'layouts/left_nav'
-  .small-10.columns.subjects_index_container
-    %h3 Subjects
+  .small-9.columns.subjects_index_container
+    %h1.title Subjects
     %ul.subject_list= render @subjects
     = render 'button_subject_form'
-    -# %div= link_to 'Add New Subject', new_subject_path

@@ -3,6 +3,7 @@ class StudentsController < ApplicationController
   before_action :student, only: [:show, :edit, :update, :destroy]
   before_action :students, only: [:index, :new, :create, :show]
   before_action :authorized_user?, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json, :js
 
   def index
   end
@@ -29,12 +30,16 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(student_params)
-    if @student.update_attributes(user: current_user)
-      flash.now[:notice] = "Student added successfully"
-      redirect_to students_path
-    else
-      flash[:errors] = @student.errors.full_messages.join(". ")
-      redirect_to students_path
+    respond_to do |format|
+      if @student.update_attributes(user: current_user)
+        format.html { redirect_to students_path, notice: "Student added successfully" }
+        format.js {}
+        format.json { render json: @student, status: :created}
+      else
+        format.html { render :new }
+        format.js {}
+        format.json { render json: @student, status: :unprocessable_entity }
+      end
     end
   end
 

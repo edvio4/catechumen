@@ -1,10 +1,8 @@
 %div{ class: "row main_container" }
   = render 'layouts/left_nav'
   = render 'students/student_menu'
-  %div{ class: 'small-10 columns curriculums_container' }
-    %h3= "#{@student.name}'s Curriculums"
+  %div{ class: 'small-9 columns curriculums_container' }
+    %h1= "#{@student.name}'s Curriculums"
 
     = render partial: "curriculums_by_subject", collection: @curriculums_by_subject, as: :subject
-
-    %div= "Select below to add a resource to #{@student.name}'s curriculum."
     = render 'form'

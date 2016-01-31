@@ -1,7 +1,7 @@
 %div{ class: "row main_container" }
   = render 'layouts/left_nav'
-  %div{ class: 'small-10 columns resources_container' }
-    %h1 All Your Resources
+  %div{ class: 'small-9 columns resources_container' }
+    .title All Your Resources
 
     .add_resource_link= link_to 'Add New Resource', new_resource_path
     = render partial: "resources_by_subject", collection: @resources_by_subject, as: :subject

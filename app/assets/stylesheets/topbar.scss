@@ -1,13 +1,20 @@
 @import 'color';
 
 
-.top-bar {
+div.top-bar.normal {
+  background-image: image-url('light-wood-texture.jpg');
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  // background-color: white;
 
   padding: 0px;
 
   a {
+    color: $rock;
     &:hover {
-      color: lighten( $brick, 10% );
+      color: $brick;
     }
   }
 
@@ -15,16 +22,27 @@
     margin-top: 6px;
   }
 
+  .top-bar-right {
+    margin-top: 15px;
+  }
 
-  .menu-text {
-    margin-top: 1px;
-    a {
-      font-size: 1.2rem;
+  .menu {
+    background-color: transparent;
+    margin-right: 10px;
+    li a {
+      padding-right: 20px;
     }
   }
 
-  .menu.vertical {
-    background-color: $rock;
+
+  .menu-text {
+    margin-top: 8px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+    padding: 0px;
+    a {
+      font-size: 2.5rem;
+    }
   }
 
   ul.right {
@@ -32,18 +50,13 @@
     height: 30px;
   }
 
-  ul.dropdown.menu li {
-    margin-bottom: 3px;
-    height: 25px;
-  }
-
-  li {
-    & a {
-    padding: 0;
-    }
+  .menu li a {
+    margin: 0px 0px 0px 0px;
   }
 
   a {
     padding: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 }

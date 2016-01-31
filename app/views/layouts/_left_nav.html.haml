@@ -1,12 +1,7 @@
-%div{ class: 'small-2 columns left_nav_wrapper' }
-  .row
-    %div{ class: 'small-12 medium-10 large-9 columns left_nav_inner' }
-      %ul{ class: 'vertical menu'}
-        %li.heading Students
-        .student_list
-          - @students.each do |student|
-            %li{ class: "student_name link" }= link_to student.name, student_path(student)
-        %hr.line
-        %li.heading Planning
-        %div{ class: "resources link" }= link_to "Resources", resources_path
-        %div{ class: "subjects link" }= link_to "Subjects", subjects_path
+%div{ class: 'small-3 columns left_nav' }
+  %ul{ class: 'vertical menu'}
+    %li.heading.students Students
+    .student_list= render 'students/student_list_left_nav'
+    %li.heading Planning
+    %div{ class: "resources link" }= link_to "Resources", resources_path
+    %div{ class: "subjects link" }= link_to "Subjects", subjects_path

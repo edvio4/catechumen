@@ -1,22 +1,22 @@
 @import 'color';
 
 .student_index_container {
-  margin-top: 40px;
+  margin-top: 100px;
 
   .student_block {
     margin-right: 10px;
     margin-bottom: 20px;
-    height: 120px;
-    border-style: solid;
-    border-color: $rock;
-    border-width: 1px;
+    height: 247px;
 
-    background-color: $gray;
+    background-image: image-url('post_it_rotated.png');
+    background-size: 120%;
+    background-position: center;
+    background-repeat: no-repeat;
 
     .link_student a {
       color: $rock;
       font-weight: bold;
-      font-size: 1.4rem;
+      font-size: 2rem;
       &:hover {
         text-decoration: underline;
       }
@@ -25,7 +25,7 @@
     .link a {
       color: $brick;
       font-weight: normal;
-      font-size: 1.3rem;
+      font-size: 1.8rem;
       &:hover {
         color: lighten( $brick, 10% );
       }
@@ -33,22 +33,41 @@
 
   }
 
+  .text {
+    padding-left: 30px;
+    padding-top: 70px;
+  }
+
   .add_student {
     text-align: center;
     vertical-align: middle;
     line-height: 90px;
+    padding-top: 35px;
   }
 
   .block_student_form {
+
+    form {
+      margin-top: 20px;
+    }
     .name_input {
-      height: 50px;
+      margin-left: 5px;
+      width: 170px;
+      height: 65px;
+      label {
+        color: $rock;
+        font-size: 1.5rem;
+      }
+      input {
+      }
     }
 
     .actions input {
-      font-size: .8rem;
-      padding: 1px, 6px, 1px, 6px;
+      background: transparent;
+      font-size: 1.1rem;
+      color: $rock;
+      padding-top: 5px;
+      padding-bottom: 0px;
     }
-
-
   }
 }

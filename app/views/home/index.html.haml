@@ -1,2 +1,15 @@
 .splash_container
-  %p.welcome= link_to 'Catechumen', students_path
+  .row= render "top_menu"
+  .row
+    %center
+      .welcome= link_to 'Catechumen', students_path
+      .definition catechumen (/ˌkætᵻˈkjuːmən, -mɛn/);
+      .definition Latin: catechumenus
+      .definition Greek: κατηχούμενος katēkhoumenos
+      .definition Definition: "One being instructed"
+      .tag_line
+        %div For Educators: A tool to help you plan your curriculum your way.
+        %div Designed for homeschoolers.  But can be used by teachers anywhere.
+      .link_image
+        .image= image_tag ('post_it_button.png')
+        %p.link= link_to 'Click Here to Start', new_user_registration_path
