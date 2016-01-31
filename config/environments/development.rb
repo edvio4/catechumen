@@ -39,6 +39,7 @@ Rails.application.configure do
     host: "localhost",
     port: 3000
   }
+  config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
