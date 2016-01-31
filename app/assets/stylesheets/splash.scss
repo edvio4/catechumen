@@ -17,7 +17,7 @@
   .menu {
     padding-top: 20px;
     a {
-    font-size: 2rem;
+    font-size: 1.5rem;
     }
   }
 
@@ -26,19 +26,16 @@
     .welcome {
       height: 150px;
     }
-    .welcome a {
+    .welcome {
     color: white;
     font-size: 7rem;
-      &:hover {
-        color: darken(white, 20%);
-      }
     }
 
-  .tag_line {
-    padding-top: 30px;
-    font-size: 1.8rem;
-    font-weight: bold;
-  }
+    .tag_line {
+      padding-top: 30px;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
 
   }
 

@@ -2,7 +2,7 @@
   .row= render "top_menu"
   .row
     %center
-      .welcome= link_to 'Catechumen', students_path
+      .welcome Catechumen
       .definition catechumen (/ˌkætᵻˈkjuːmən, -mɛn/);
       .definition Latin: catechumenus
       .definition Greek: κατηχούμενος katēkhoumenos
@@ -12,4 +12,7 @@
         %div Designed for homeschoolers.  But can be used by teachers anywhere.
       .link_image
         .image= image_tag ('post_it_button.png')
-        %p.link= link_to 'Click Here to Start', new_user_registration_path
+        - if user_signed_in?
+          %p.link= link_to 'Click Here to Start', students_path
+        - else
+          %p.link= link_to 'Click Here to Start', new_user_registration_path
