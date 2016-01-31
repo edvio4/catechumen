@@ -1,0 +1,7 @@
+%ul.menu.align-right.splash
+  - if user_signed_in?
+    %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+    %li= link_to  "Signed in as #{current_user.first_name}", "users/#{current_user.id}", { id: "#{current_user.id}", class: "username" }
+  - else
+    %li= link_to 'Sign In', new_user_session_path
+    %li.active= link_to 'Sign Up', new_user_registration_path

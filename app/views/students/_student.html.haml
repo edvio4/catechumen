@@ -1,4 +1,5 @@
 .column.student_block
-  .link_student= link_to student.name, student_path(student)
-  .link= link_to "Curriculums", student_curriculums_path(student)
-  .link= link_to "Calendar", "/students/#{student.id}/lessons?start_date=#{Date.today.strftime("%F")}&view=month"
+  .text
+    .link_student= link_to student.name, student_path(student)
+    .link= link_to "Curriculums", student_curriculums_path(student)
+    .link= link_to "Calendar", "/students/#{student.id}/lessons?start_date=#{Date.today.strftime("%F")}&view=month"

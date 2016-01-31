@@ -1,18 +1,19 @@
 @import 'color';
 
 .student_menu {
-  width: 500px;
+  width: 600px;
   height: 40px;
   // border-style: solid;
   // border-color: $rock;
-  // border-width: 1px;
-  margin-left: 150px;
+  // border-width: 1px
+  padding-top: 25px;
+  margin-left: 300px;
   margin-bottom: 0px;
   li a {
-    color: $brick;
-    font-size: 1.2rem;
+    color: white;
+    font-size: 2.2rem;
     &:hover {
-      color: lighten( $brick, 10% );
+      text-decoration: underline;
     }
   }
 }

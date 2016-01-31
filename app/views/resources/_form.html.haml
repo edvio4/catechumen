@@ -3,12 +3,12 @@
     = f.label :title
     = f.text_field :title, placeholder: "Title"
 
-  %div{ class: "resource-form-subject" }
+  .resource-form-subject
     = f.label :subject
     = f.collection_select(:subject_id, Subject.where(user: current_user).order(:name), :id, :name, { prompt: true })
-    .input_instructions
-      = "If the Subject you want to add is not listed, then"
-      = link_to 'Add New Subject', new_subject_path
+  .input_instructions
+    = "If the Subject you want to add is not listed, then"
+    = link_to 'Add New Subject', new_subject_path
 
   %p
   %div{ class: "resource-form-unit inline" }

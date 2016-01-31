@@ -1,30 +1,40 @@
 @import 'color';
 
-.resources_container, .curriculums_container, .new_schedule_container, .curriculum_show_container, .student_show_container, .subjects_index_container {
+.resources_container, .curriculums_container, .new_schedule_container, .curriculum_show_container, .student_show_container, .subjects_index_container, .new_resource_container {
+
+  padding-top: 50px;
+
+  .title {
+    font-size: 3rem;
+    color: white;
+  }
+
+  .add_resource_link a {
+    font-size: 1.5rem;
+  }
 
   a {
-    color: $brick;
+    color: #00BFFF;
     &:hover {
-      color: lighten( $brick, 10% );
-      text-decoration: underline;
+      color: darken( #00BFFF, 10% );
     }
   }
 
   li {
     list-style-type: none;
     & a {
-      font-size: 1.1rem;
+      font-size: 1.8rem;
     }
   }
 
   .subject_heading {
     font-weight: bold;
-    font-size: 1.3rem;
-    color: $rock;
+    font-size: 2rem;
+    color: white;
   }
 
   h1, h2, h3, h4 {
-    color: $rock;
+    color: white;
     font-weight: bold;
   }
 
@@ -34,6 +44,7 @@
 
   h2 {
     font-size: 1.8rem;
+
   }
 
   h3 {
@@ -43,8 +54,46 @@
   h4 {
     font-size: 1.3rem;
   }
+
+  .curriculum_details, .schedule_details {
+    color: white;
+    font-size: 1.5rem;
+    margin-top: 40px;
+  }
+
+  hr {
+    margin-left: 0px;
+    width: 80%;
+  }
 }
 
-.resources_container, .subjects_index_container {
+.resources_container, .subjects_index_container, .new_resource_container {
   margin-top: 40px;
+}
+
+.new_schedule_container {
+  .curriculum_details_schedule {
+    margin-bottom: 30px;
+    margin-top: 30px;
+    li {
+      color: white;
+      font-size: 1.7rem;
+    }
+  }
+
+  .set_schedule {
+    color: white;
+    font-size: 1.4rem;
+  }
+
+  .check_boxes label {
+    color: white;
+    font-size: 1.3rem;
+  }
+
+  .set_schedule_button input {
+    background: transparent;
+    padding-top: 7px;
+  }
+
 }

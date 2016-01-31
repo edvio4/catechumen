@@ -30,6 +30,7 @@ class GetStudentLessons
 
   def lessons_no_fraction(curriculum)
     curriculum_lessons = get_lessons_for_three_months(curriculum)
+
     curriculum_lessons.each do |lesson|
       @lessons << CalendarLesson.new(lesson)
     end

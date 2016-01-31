@@ -22,12 +22,35 @@ form {
   }
 }
 
+form {
+  & select[id=curriculum_resource_id] {
+    width: 30%;
+    font-size: 1.4rem;
+    & option {
+      font-size: 1rem;
+    }
+  }
+}
+
 .field_with_errors {
   display: inline;
 }
 
 .input_instructions {
   &, a {
-    font-size: .875rem;
+    color: white;
+    font-size: 1.3rem;
   }
+}
+
+.form-actions input {
+  background-color: transparent;
+  color: white;
+  padding-top: 4px;
+  padding-bottom: 1px;
+}
+
+.resource-form-title label, .resource-form-subject label {
+  color: white;
+  font-size: 1.5rem;
 }

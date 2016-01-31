@@ -1,40 +1,26 @@
 @import 'color';
 
-.left_nav_inner {
-  background-color: $beige;
+.left_nav {
+  font-family: chalk_font;
   padding-bottom: 18px;
   padding-top: 3px;
   margin-top: 40px;
-  border-style: solid;
-  border-color: $rock;
-  border-width: 1px;
+  padding-left: 4rem;
 
   a, & {
-    color: $brick;
+    color: white;
   }
 
   a:hover {
-    color: lighten( $brick, 10% );
+    color: darken( white, 50% );
   }
   .heading {
     padding-top: .8rem;
     font-weight: bold;
+    text-decoration: underline;
   }
 
   a, .heading {
-    font-size: 1.1rem;
+    font-size: 2rem;
   }
-
-  hr {
-    height: 1px;
-    color: $rock;
-    background-color: $rock;
-    border: none;
-    margin: 0px;
-    margin-top: 10px;
-  }
-}
-
-.left_nav_wrapper{
-
 }
