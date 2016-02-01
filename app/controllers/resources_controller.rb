@@ -23,7 +23,7 @@ class ResourcesController < ApplicationController
 
   def update
     if @resource.update_attributes(resource_params)
-      flash.now[:notice] = "Resource edited successfully"
+      flash[:notice] = "Resource edited successfully"
       redirect_to resource_path(@resource)
     else
       flash.now[:errors] = @resource.errors.full_messages.join(". ")

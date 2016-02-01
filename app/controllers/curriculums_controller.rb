@@ -4,14 +4,12 @@ class CurriculumsController < ApplicationController
   before_action :authenticate_user!
   before_action :student, only: [:index, :create]
   before_action :curriculum, only: [:show, :edit, :update, :destroy]
-  before_action :students, only: [:index, :show, :edit, :update, :destroy]
+  before_action :students, only: [:index, :show, :edit, :update, :create, :destroy]
   before_action :authorized_user?, only: [:index, :show, :edit, :update, :destroy]
 
   def index
     @curriculum = Curriculum.new
-    @resources = current_user.resources.joins(:curriculums).where.not(curriculums: { student: @student } ).order(:title)
-    @grouped_options = CreateCurriculumFormOptions.new(@student).create_grouped_options
-    @curriculums_by_subject = @student.subjects.order(:name).uniq
+    get_grouped_options
   end
 
 
@@ -37,11 +35,12 @@ class CurriculumsController < ApplicationController
     @curriculum = Curriculum.new(curriculum_params)
     if @curriculum.update_attributes(student: @student, user: current_user)
       CreateCurriculumLessons.new(@curriculum, current_user)
-      flash.now[:notice] = "Curriculum added successfully"
+      flash[:notice] = "Curriculum added successfully"
       redirect_to student_curriculums_path(@student)
     else
+      get_grouped_options
       flash.now[:errors] = @curriculum.errors.full_messages.join(". ")
-      redirect_to student_curriculums_path(@student)
+      render :index
     end
   end
 
@@ -93,5 +92,11 @@ class CurriculumsController < ApplicationController
 
   def is_number?(string)
     string =~ /\d+/
+  end
+
+  def get_grouped_options
+    @resources = current_user.resources.joins(:curriculums).where.not(curriculums: { student: @student } ).order(:title)
+    @grouped_options = CreateCurriculumFormOptions.new(@student).create_grouped_options
+    @curriculums_by_subject = @student.subjects.order(:name).uniq
   end
 end
