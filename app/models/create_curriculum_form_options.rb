@@ -30,10 +30,11 @@ class CreateCurriculumFormOptions
   def get_subjects
     subjects = []
     resources = Resource.all - @student.resources
+    return subjects if resources.empty?
     resources.each do |resource|
       subjects << resource.subject
     end
-    subjects.uniq!.sort_by { |x| x.name }
+    subjects.uniq!.sort_by { |x| x.name }  
   end
 
   def get_resources(subject)
