@@ -7,6 +7,6 @@
   $(".student_block").remove();
   $("li.heading.students").after("<div class='student_list'></div");
   $(".student_list").append("<%= j render 'student_list_left_nav' %>");
-  $("div.row.small-up-3.medium-up-4.large-up-5").append("<%= j render @students %>");
-  $("div.row.small-up-3.medium-up-4.large-up-5").append("<%= j render 'add_student_block' %>");
+  $("div.row.small-up-2.medium-up-3.large-up-4").append("<%= j render @students %>");
+  $("div.row.small-up-2.medium-up-3.large-up-4").append("<%= j render 'add_student_block' %>");
 <% end %>
