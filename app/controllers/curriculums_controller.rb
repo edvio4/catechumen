@@ -96,7 +96,7 @@ class CurriculumsController < ApplicationController
 
   def get_grouped_options
     @resources = current_user.resources.joins(:curriculums).where.not(curriculums: { student: @student } ).order(:title)
-    @grouped_options = CreateCurriculumFormOptions.new(@student, @resources).create_grouped_options
+    @grouped_options = CreateCurriculumFormOptions.new(@student).create_grouped_options
     @curriculums_by_subject = @student.subjects.order(:name).uniq
   end
 end
