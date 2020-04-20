@@ -1,7 +1,8 @@
 class CreateCurriculumFormOptions
 
-  def initialize(student)
+  def initialize(student, resources)
     @student = student
+    @resources = resources
     @grouped_options = []
   end
 
@@ -29,8 +30,7 @@ class CreateCurriculumFormOptions
 
   def get_subjects
     subjects = []
-    resources = Resource.all - @student.resources
-    resources.each do |resource|
+    @resources.each do |resource|
       subjects << resource.subject
     end
     subjects.uniq!
@@ -38,7 +38,6 @@ class CreateCurriculumFormOptions
   end
 
   def get_resources(subject)
-    resources = Resource.all - @student.resources
-    resources.select { |a| a.subject == subject }.sort_by { |a| a.title }
+    @resources.select { |a| a.subject == subject }.sort_by { |a| a.title }
   end
 end
